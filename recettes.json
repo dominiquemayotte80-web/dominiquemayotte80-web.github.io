@@ -1,115 +1,368 @@
 {
-  "table_des_matieres": [
-    "Recettes de Base",
-    "Recettes Airfryer",
-    "Recettes Desserts",
-    "Recettes Noël",
-    "Recettes Salades Hivernales et Hors-d'œuvre",
-    "Recettes Feuilles de Riz",
-    "Recettes Poké Bowls",
-    "Recettes Soupes Consistantes",
-    "Recettes Anti-inflammatoires"
-  ],
   "themes": [
     {
-      "theme": "Recettes de Base",
+      "theme": "Recettes Anti-inflammatoires et Smoothies",
       "recettes": [
         {
+          "titre": "Smoothie Brûle-Graisse Vert (détox & énergie)",
+          "portion": 1,
+          "ingredients": [
+            "1 tasse d’épinards frais lavés",
+            "1/2 concombre pelé",
+            "1 pomme verte (sans la peau si désiré)",
+            "1/2 avocat bien mûr",
+            "Le jus d’un demi-citron",
+            "1 petit morceau de gingembre frais (1 à 2 cm)",
+            "200 ml d’eau de coco (sans sucre ajouté) ou d’eau froide",
+            "Quelques glaçons"
+          ],
+          "preparation": [
+            "Mettre tous les ingrédients dans un blender.",
+            "Mixer jusqu’à obtenir une texture lisse et onctueuse.",
+            "Goûter et ajuster avec plus de citron si désiré.",
+            "Servir immédiatement bien frais."
+          ],
+          "bienfaits": {
+            "citron_et_gingembre": "activent le métabolisme et favorisent la digestion",
+            "epinards_et_concombre": "riches en fibres et hydratants, faibles en calories",
+            "avocat": "apporte de bons gras qui prolongent la satiété"
+          }
+        },
+        {
+          "titre": "Saumon au gingembre citron",
+          "ingredients": ["Saumon", "Gingembre frais", "Citron"],
+          "preparation": "Cuire le saumon avec assaisonnement léger."
+        },
+        {
+          "titre": "Poulet curcuma et légumes",
+          "ingredients": ["Poulet", "Curcuma", "Courgettes", "Carottes"],
+          "preparation": "Cuire le poulet avec légumes et curcuma."
+        },
+        {
+          "titre": "Soupe dorée au curcuma et lentilles",
+          "ingredients": ["Lentilles", "Curcuma", "Bouillon"],
+          "preparation": "Cuire jusqu’à consistance épaisse et réconfortante."
+        },
+        {
+          "titre": "Poisson vapeur au curcuma et légumes verts",
+          "ingredients": ["Poisson blanc", "Brocolis", "Curcuma"],
+          "preparation": "Cuire à la vapeur et assaisonner."
+        }
+      ]
+    },
+    {
+      "theme": "Recettes de Base (Sans Gluten & Sans Lactose)",
+      "recettes": [
+        {
+          "titre": "Raviolis au poulet (sans gluten & sans lactose)",
+          "portion": 4,
+          "ingredients": {
+            "pate": [
+              "200 g de farine sans gluten (riz ou mélange spécial pâte)",
+              "2 œufs",
+              "1 c. à soupe d’huile d’olive",
+              "1 pincée de sel"
+            ],
+            "farce": [
+              "200 g de blanc de poulet cuit et émincé",
+              "1 petit oignon finement haché",
+              "1 gousse d’ail hachée",
+              "1 c. à soupe de persil frais ciselé",
+              "1 c. à soupe d’huile d’olive",
+              "Sel et poivre"
+            ]
+          },
+          "preparation": [
+            "Préparer la pâte : mélanger farine, œufs, huile et sel, puis pétrir. Laisser reposer 30 minutes.",
+            "Préparer la farce : mixer le poulet avec oignon, ail, persil, huile d’olive, sel et poivre.",
+            "Façonner les raviolis : étaler la pâte, découper des cercles, garnir de farce, refermer et sceller.",
+            "Cuire : plonger dans l’eau bouillante salée 3-4 minutes, égoutter et servir."
+          ],
+          "astuce": "Servir avec une sauce tomate maison sans lactose ou un filet d’huile d’olive."
+        },
+        {
+          "titre": "Croûte de pizza sans gluten & sans lactose",
+          "portion": 4,
+          "ingredients": [
+            "250 g de farine sans gluten (mélange spécial pain/pizza)",
+            "1 c. à café de levure sèche sans gluten",
+            "150 ml d’eau tiède",
+            "2 c. à soupe d’huile d’olive",
+            "1/2 c. à café de sel",
+            "1/2 c. à café de sucre ou sirop d’érable"
+          ],
+          "preparation": [
+            "Dans un bol, mélanger l’eau tiède avec la levure et le sucre. Laisser reposer 5 à 10 minutes jusqu’à ce que des bulles se forment.",
+            "Ajouter la farine sans gluten, le sel et l’huile d’olive.",
+            "Mélanger puis pétrir jusqu’à obtenir une pâte souple (ajouter un peu d’eau ou de farine au besoin).",
+            "Couvrir et laisser lever 45 à 60 minutes dans un endroit tiède.",
+            "Préchauffer le four à 220°C (425°F).",
+            "Étaler la pâte sur une plaque recouverte de papier cuisson.",
+            "Précuire la croûte 10 minutes, puis garnir selon vos envies et remettre au four 10-12 minutes."
+          ],
+          "astuce": "Pour une croûte plus croustillante, ajouter 1 c. à soupe de farine de pois chiches ou de maïs dans le mélange."
+        },
+        {
+          "titre": "Salade de macaroni aux légumineuses (sans gluten & sans lactose)",
+          "portion": 4,
+          "ingredients": [
+            "250 g de pâtes macaroni sans gluten",
+            "1 boîte (400 g) de pois chiches cuits et égouttés",
+            "1 boîte (400 g) de lentilles vertes ou brunes cuites et égouttées",
+            "1 poivron rouge coupé en dés",
+            "1 concombre coupé en dés",
+            "1 carotte râpée",
+            "2 oignons verts émincés",
+            "3 c. à soupe d’huile d’olive",
+            "2 c. à soupe de jus de citron",
+            "1 c. à café de moutarde de Dijon (sans gluten)",
+            "Sel et poivre au goût",
+            "Herbes fraîches au choix (persil, coriandre ou basilic)"
+          ],
+          "preparation": [
+            "Cuire les pâtes macaroni sans gluten selon les instructions du paquet, puis les rincer à l’eau froide et bien égoutter.",
+            "Dans un grand saladier, mélanger les pois chiches, les lentilles, le poivron, le concombre, la carotte et les oignons verts.",
+            "Ajouter les pâtes refroidies et mélanger délicatement.",
+            "Dans un petit bol, fouetter l’huile d’olive, le jus de citron, la moutarde, le sel et le poivre.",
+            "Verser la vinaigrette sur la salade et bien mélanger.",
+            "Parsemer d’herbes fraîches avant de servir."
+          ],
+          "astuce": "Pour plus de fraîcheur, ajouter quelques tomates cerises ou un peu de maïs. La salade se conserve 2 jours au réfrigérateur."
+        },
+        {
           "titre": "Lasagne Sans Gluten Sans Lactose",
-          "ingredients": ["Pâtes de lasagne sans gluten","Sauce tomate maison","Lait végétal","Fécule de maïs","Viande hachée ou lentilles","Épices"],
+          "ingredients": ["Pâtes de lasagne sans gluten", "Sauce tomate maison", "Lait végétal", "Fécule de maïs", "Viande hachée ou lentilles", "Épices"],
           "preparation": "Alterner couches de pâtes, sauce tomate, béchamel végétale et garniture. Cuire au four 35-40 min à 180°C."
-        },
-        {
-          "titre": "Croûte de Pizza Sans Gluten et Sans Lactose",
-          "ingredients": ["Farine sans gluten","Levure","Eau tiède","Huile d’olive","Sel"],
-          "preparation": "Mélanger les ingrédients, former une pâte, étaler, cuire légèrement avant de garnir et remettre au four."
-        },
-        {
-          "titre": "Salade de Macaroni Sans Gluten Sans Lactose avec Légumineuses",
-          "ingredients": ["Pâtes sans gluten","Pois chiches","Légumes croquants","Vinaigrette légère"],
-          "preparation": "Cuire les pâtes, mélanger avec pois chiches et légumes, assaisonner avec vinaigrette."
         }
       ]
     },
     {
       "theme": "Recettes Airfryer",
       "recettes": [
-        {"titre": "Saumon au Airfryer", "ingredients": ["Filets de saumon","Citron","Herbes"], "preparation": "Assaisonner le saumon, cuire au Airfryer 10 min à 180°C."},
-        {"titre": "Poulet croustillant au Airfryer", "ingredients": ["Poitrines de poulet","Farine sans gluten","Épices"], "preparation": "Enrober le poulet, cuire 15 min à 190°C dans le Airfryer."},
-        {"titre": "Pois chiches assaisonnés", "ingredients": ["Pois chiches cuits","Épices","Huile d’olive"], "preparation": "Mélanger et cuire au Airfryer 15 min à 180°C."},
-        {"titre": "Gâteau sans gluten sans lactose au Airfryer", "ingredients": ["Farine sans gluten","Lait végétal","Sucre de coco","Poudre à lever"], "preparation": "Préparer la pâte et cuire dans un moule adapté au Airfryer 20-25 min à 160°C."},
-        {"titre": "Boulettes de porc sans gluten sans lactose", "ingredients": ["Porc haché","Ail","Oignon","Farine de riz"], "preparation": "Former des boulettes et cuire au Airfryer 12 min à 190°C."}
+        {
+          "titre": "Saumon au Airfryer",
+          "ingredients": ["Filets de saumon", "Citron", "Herbes"],
+          "preparation": "Assaisonner le saumon, cuire au Airfryer 10 min à 180°C."
+        },
+        {
+          "titre": "Poulet croustillant au Airfryer",
+          "ingredients": ["Poitrines de poulet", "Farine sans gluten", "Épices"],
+          "preparation": "Enrober le poulet, cuire 15 min à 190°C dans le Airfryer."
+        },
+        {
+          "titre": "Pois chiches assaisonnés",
+          "ingredients": ["Pois chiches cuits", "Épices", "Huile d’olive"],
+          "preparation": "Mélanger et cuire au Airfryer 15 min à 180°C."
+        },
+        {
+          "titre": "Gâteau sans gluten sans lactose au Airfryer",
+          "ingredients": ["Farine sans gluten", "Lait végétal", "Sucre de coco", "Poudre à lever"],
+          "preparation": "Préparer la pâte et cuire dans un moule adapté au Airfryer 20-25 min à 160°C."
+        },
+        {
+          "titre": "Boulettes de porc sans gluten sans lactose",
+          "ingredients": ["Porc haché", "Ail", "Oignon", "Farine de riz"],
+          "preparation": "Former des boulettes et cuire au Airfryer 12 min à 190°C."
+        }
       ]
     },
     {
       "theme": "Recettes Desserts",
       "recettes": [
-        {"titre": "Gâteau moelleux sans gluten sans lactose", "ingredients": ["Farine sans gluten","Compote de pommes","Lait végétal"], "preparation": "Mélanger et cuire 25-30 min à 180°C."},
-        {"titre": "Muffins aux fruits sans gluten sans lactose", "ingredients": ["Farine sans gluten","Petits fruits","Lait végétal"], "preparation": "Préparer la pâte, ajouter les fruits et cuire 20 min à 180°C."},
-        {"titre": "Dessert glacé banane-fraise", "ingredients": ["Bananes congelées","Fraises congelées"], "preparation": "Mixer les fruits pour obtenir une crème glacée instantanée."},
-        {"titre": "Chips de pomme maison", "ingredients": ["Pommes","Cannelle"], "preparation": "Trancher les pommes, saupoudrer de cannelle et cuire au four 2h à basse température."}
+        {
+          "titre": "Crème glacée aux fraises (sans gluten & sans lactose)",
+          "portion": 4,
+          "ingredients": [
+            "400 g de fraises fraîches (ou surgelées)",
+            "200 ml de lait de coco bien froid",
+            "2 c. à soupe de sirop d’érable (ou miel, si toléré)",
+            "1 c. à café d’extrait de vanille naturelle",
+            "1 pincée de sel"
+          ],
+          "preparation": [
+            "Laver et équeuter les fraises, puis les couper en morceaux.",
+            "Mixer les fraises avec le lait de coco, le sirop d’érable, la vanille et le sel jusqu’à obtenir une texture lisse.",
+            "Verser la préparation dans un récipient hermétique et placer au congélateur pendant au moins 4 heures.",
+            "Remuer toutes les heures avec une fourchette pour éviter les cristaux de glace.",
+            "Sortir du congélateur 5 minutes avant de servir pour plus d’onctuosité."
+          ],
+          "astuce": "Ajouter 1/2 avocat ou une banane bien mûre pour une texture plus crémeuse."
+        },
+        {
+          "titre": "Gâteau moelleux sans gluten sans lactose",
+          "ingredients": ["Farine sans gluten", "Compote de pommes", "Lait végétal"],
+          "preparation": "Mélanger et cuire 25-30 min à 180°C."
+        },
+        {
+          "titre": "Muffins aux fruits sans gluten sans lactose",
+          "ingredients": ["Farine sans gluten", "Petits fruits", "Lait végétal"],
+          "preparation": "Préparer la pâte, ajouter les fruits et cuire 20 min à 180°C."
+        },
+        {
+          "titre": "Dessert glacé banane-fraise",
+          "ingredients": ["Bananes congelées", "Fraises congelées"],
+          "preparation": "Mixer les fruits pour obtenir une crème glacée instantanée."
+        },
+        {
+          "titre": "Chips de pomme maison",
+          "ingredients": ["Pommes", "Cannelle"],
+          "preparation": "Trancher les pommes, saupoudrer de cannelle et cuire au four 2h à basse température."
+        },
+        {
+          "titre": "Dessert croustillant feuille de riz banane-chocolat",
+          "ingredients": ["Feuilles de riz", "Banane", "Chocolat sans lactose fondu"],
+          "preparation": "Humecter les feuilles, garnir et cuire 5 min pour croustiller."
+        }
       ]
     },
     {
       "theme": "Recettes Noël",
       "recettes": [
-        {"titre": "Farce pour dinde sans gluten sans lactose", "ingredients": ["Pain sans gluten","Oignons","Céleri","Bouillon de légumes"], "preparation": "Mélanger les ingrédients et cuire avant de farcir la dinde."},
-        {"titre": "Marinade de Noël classique", "ingredients": ["Huile d’olive","Ail","Herbes de Noël","Jus d’orange"], "preparation": "Mélanger et badigeonner les viandes."},
-        {"titre": "Accompagnement légumes rôtis de Noël", "ingredients": ["Courges","Carottes","Pommes de terre"], "preparation": "Assaisonner et rôtir au four."}
+        {
+          "titre": "Farce pour dinde sans gluten sans lactose",
+          "ingredients": ["Pain sans gluten", "Oignons", "Céleri", "Bouillon de légumes"],
+          "preparation": "Mélanger les ingrédients et cuire avant de farcir la dinde."
+        },
+        {
+          "titre": "Marinade de Noël classique",
+          "ingredients": ["Huile d’olive", "Ail", "Herbes de Noël", "Jus d’orange"],
+          "preparation": "Mélanger et badigeonner les viandes."
+        },
+        {
+          "titre": "Accompagnement légumes rôtis de Noël",
+          "ingredients": ["Courges", "Carottes", "Pommes de terre"],
+          "preparation": "Assaisonner et rôtir au four."
+        }
       ]
     },
     {
       "theme": "Recettes Salades Hivernales et Hors-d'œuvre",
       "recettes": [
-        {"titre": "Salade d’amour hivernale", "ingredients": ["Chou rouge","Carottes","Vinaigrette légère"], "preparation": "Râper les légumes et mélanger avec la vinaigrette."},
-        {"titre": "Salade de pommes de terre hivernale", "ingredients": ["Pommes de terre","Cornichons","Ciboulette"], "preparation": "Cuire les pommes de terre, mélanger avec les autres ingrédients."},
-        {"titre": "Salade originale poires-noix", "ingredients": ["Poires","Noix","Roquette"], "preparation": "Assembler les ingrédients et ajouter une vinaigrette."},
-        {"titre": "Hors-d’œuvre roulés de courgettes", "ingredients": ["Courgettes","Tomates séchées","Basilic"], "preparation": "Griller les courgettes, garnir et rouler."}
+        {
+          "titre": "Salade d’amour hivernale",
+          "ingredients": ["Chou rouge", "Carottes", "Vinaigrette légère"],
+          "preparation": "Râper les légumes et mélanger avec la vinaigrette."
+        },
+        {
+          "titre": "Salade de pommes de terre hivernale",
+          "ingredients": ["Pommes de terre", "Cornichons", "Ciboulette"],
+          "preparation": "Cuire les pommes de terre, mélanger avec les autres ingrédients."
+        },
+        {
+          "titre": "Salade originale poires-noix",
+          "ingredients": ["Poires", "Noix", "Roquette"],
+          "preparation": "Assembler les ingrédients et ajouter une vinaigrette."
+        },
+        {
+          "titre": "Hors-d’œuvre roulés de courgettes",
+          "ingredients": ["Courgettes", "Tomates séchées", "Basilic"],
+          "preparation": "Griller les courgettes, garnir et rouler."
+        }
       ]
     },
     {
       "theme": "Recettes Feuilles de Riz",
       "recettes": [
-        {"titre": "Rouleaux de riz au saumon", "ingredients": ["Feuilles de riz","Saumon","Avocat"], "preparation": "Humecter les feuilles de riz à l’eau, garnir et cuire légèrement au four."},
-        {"titre": "Rouleaux de riz crevettes", "ingredients": ["Feuilles de riz","Crevettes","Laitue"], "preparation": "Tremper les feuilles dans l’eau, garnir et cuire au four 8-10 min."},
-        {"titre": "Rouleaux de riz poulet", "ingredients": ["Feuilles de riz","Poulet cuit","Carottes râpées"], "preparation": "Humecter les feuilles, garnir et cuire au four 10 min."},
-        {"titre": "Rouleaux de riz bœuf", "ingredients": ["Feuilles de riz","Bœuf haché","Poivrons"], "preparation": "Humidifier, garnir et cuire au four 12 min."},
-        {"titre": "Dessert croustillant feuille de riz banane-chocolat", "ingredients": ["Feuilles de riz","Banane","Chocolat sans lactose fondu"], "preparation": "Humecter les feuilles, garnir et cuire 5 min pour croustiller."}
+        {
+          "titre": "Rouleaux de riz au saumon",
+          "ingredients": ["Feuilles de riz", "Saumon", "Avocat"],
+          "preparation": "Humecter les feuilles de riz à l’eau, garnir et cuire légèrement au four."
+        },
+        {
+          "titre": "Rouleaux de riz crevettes",
+          "ingredients": ["Feuilles de riz", "Crevettes", "Laitue"],
+          "preparation": "Tremper les feuilles dans l’eau, garnir et cuire au four 8-10 min."
+        },
+        {
+          "titre": "Rouleaux de riz poulet",
+          "ingredients": ["Feuilles de riz", "Poulet cuit", "Carottes râpées"],
+          "preparation": "Humecter les feuilles, garnir et cuire au four 10 min."
+        },
+        {
+          "titre": "Rouleaux de riz bœuf",
+          "ingredients": ["Feuilles de riz", "Bœuf haché", "Poivrons"],
+          "preparation": "Humidifier, garnir et cuire au four 12 min."
+        }
       ]
     },
     {
       "theme": "Recettes Poké Bowls",
       "recettes": [
-        {"titre": "Poké Bowl Poulet", "ingredients": ["Poulet grillé","Riz","Légumes croquants"], "preparation": "Assembler dans un bol avec sauce sans gluten."},
-        {"titre": "Poké Bowl Saumon croustillant", "ingredients": ["Saumon grillé croustillant","Riz","Avocat"], "preparation": "Servir avec sauce soja sans gluten."},
-        {"titre": "Poké Bowl Crevettes", "ingredients": ["Crevettes grillées","Riz","Mangue"], "preparation": "Assembler dans un bol avec légumes."},
-        {"titre": "Poké Bowl Thon", "ingredients": ["Thon mariné","Riz","Édamamés"], "preparation": "Assembler avec légumes et sauce sans gluten."},
-        {"titre": "Poké Bowl Vegan", "ingredients": ["Tofu grillé","Riz","Légumes variés"], "preparation": "Assembler et servir froid."},
-        {"titre": "Poké Bowl Végétarien", "ingredients": ["Omelette sans lactose","Riz","Légumes"], "preparation": "Couper en morceaux et assembler."},
-        {"titre": "Poké Bowl Poulet épicé", "ingredients": ["Poulet assaisonné pimenté","Riz","Concombre"], "preparation": "Assembler avec sauce piquante."},
-        {"titre": "Poké Bowl Saumon épicé", "ingredients": ["Saumon mariné épicé","Riz","Chou rouge"], "preparation": "Servir avec garnitures croquantes."},
-        {"titre": "Poké Bowl Très piquant", "ingredients": ["Poisson ou tofu","Riz","Sauce extra piquante"], "preparation": "Assembler et servir pour amateurs de piquant."}
+        {
+          "titre": "Poké Bowl Poulet",
+          "ingredients": ["Poulet grillé", "Riz", "Légumes croquants"],
+          "preparation": "Assembler dans un bol avec sauce sans gluten."
+        },
+        {
+          "titre": "Poké Bowl Saumon croustillant",
+          "ingredients": ["Saumon grillé croustillant", "Riz", "Avocat"],
+          "preparation": "Servir avec sauce soja sans gluten."
+        },
+        {
+          "titre": "Poké Bowl Crevettes",
+          "ingredients": ["Crevettes grillées", "Riz", "Mangue"],
+          "preparation": "Assembler dans un bol avec légumes."
+        },
+        {
+          "titre": "Poké Bowl Thon",
+          "ingredients": ["Thon mariné", "Riz", "Édamamés"],
+          "preparation": "Assembler avec légumes et sauce sans gluten."
+        },
+        {
+          "titre": "Poké Bowl Vegan",
+          "ingredients": ["Tofu grillé", "Riz", "Légumes variés"],
+          "preparation": "Assembler et servir froid."
+        },
+        {
+          "titre": "Poké Bowl Végétarien",
+          "ingredients": ["Omelette sans lactose", "Riz", "Légumes"],
+          "preparation": "Couper en morceaux et assembler."
+        },
+        {
+          "titre": "Poké Bowl Poulet épicé",
+          "ingredients": ["Poulet assaisonné pimenté", "Riz", "Concombre"],
+          "preparation": "Assembler avec sauce piquante."
+        },
+        {
+          "titre": "Poké Bowl Saumon épicé",
+          "ingredients": ["Saumon mariné épicé", "Riz", "Chou rouge"],
+          "preparation": "Servir avec garnitures croquantes."
+        },
+        {
+          "titre": "Poké Bowl Très piquant",
+          "ingredients": ["Poisson ou tofu", "Riz", "Sauce extra piquante"],
+          "preparation": "Assembler et servir pour amateurs de piquant."
+        }
       ]
     },
     {
       "theme": "Recettes Soupes Consistantes",
       "recettes": [
-        {"titre": "Soupe aux légumineuses", "ingredients": ["Lentilles","Pois chiches","Bouillon"], "preparation": "Cuire tous les ingrédients ensemble jusqu’à consistance épaisse."},
-        {"titre": "Soupe courge butternut", "ingredients": ["Courge butternut","Bouillon","Épices"], "preparation": "Cuire et mixer pour obtenir une soupe veloutée."},
-        {"titre": "Soupe au poulet consistante", "ingredients": ["Poulet","Pommes de terre","Carottes"], "preparation": "Cuire le tout dans du bouillon jusqu’à épaississement."},
-        {"titre": "Soupe aux champignons et riz", "ingredients": ["Champignons","Riz","Bouillon"], "preparation": "Cuire ensemble pour obtenir une soupe nourrissante."},
-        {"titre": "Soupe aux patates douces et coco", "ingredients": ["Patates douces","Lait de coco","Bouillon"], "preparation": "Cuire et mixer pour consistance crémeuse."}
-      ]
-    },
-    {
-      "theme": "Recettes Anti-inflammatoires",
-      "recettes": [
-        {"titre": "Poulet curcuma et légumes", "ingredients": ["Poulet","Curcuma","Courgettes","Carottes"], "preparation": "Cuire le poulet avec légumes et curcuma."},
-        {"titre": "Saumon au gingembre citron", "ingredients": ["Saumon","Gingembre frais","Citron"], "preparation": "Cuire le saumon avec assaisonnement léger."},
-        {"titre": "Porc aux légumes et curcuma", "ingredients": ["Porc","Curcuma","Poivrons","Oignons"], "preparation": "Sauter avec un filet d’huile d’olive."},
-        {"titre": "Poisson vapeur au curcuma et légumes verts", "ingredients": ["Poisson blanc","Brocolis","Curcuma"], "preparation": "Cuire à la vapeur et assaisonner."},
-        {"titre": "Tofu aux légumes et curry doux", "ingredients": ["Tofu","Courgettes","Épinards","Curry doux"], "preparation": "Faire revenir le tofu et légumes avec curry."},
-        {"titre": "Soupe dorée au curcuma et lentilles", "ingredients": ["Lentilles","Curcuma","Bouillon"], "preparation": "Cuire jusqu’à consistance épaisse et réconfortante."}
+        {
+          "titre": "Soupe aux légumineuses",
+          "ingredients": ["Lentilles", "Pois chiches", "Bouillon"],
+          "preparation": "Cuire tous les ingrédients ensemble jusqu’à consistance épaisse."
+        },
+        {
+          "titre": "Soupe courge butternut",
+          "ingredients": ["Courge butternut", "Bouillon", "Épices"],
+          "preparation": "Cuire et mixer pour obtenir une soupe veloutée."
+        },
+        {
+          "titre": "Soupe au poulet consistante",
+          "ingredients": ["Poulet", "Pommes de terre", "Carottes"],
+          "preparation": "Cuire le tout dans du bouillon jusqu’à épaississement."
+        },
+        {
+          "titre": "Soupe aux champignons et riz",
+          "ingredients": ["Champignons", "Riz", "Bouillon"],
+          "preparation": "Cuire ensemble pour obtenir une soupe nourrissante."
+        },
+        {
+          "titre": "Soupe aux patates douces et coco",
+          "ingredients": ["Patates douces", "Lait de coco", "Bouillon"],
+          "preparation": "Cuire et mixer pour consistance crémeuse."
+        }
       ]
     }
   ]
