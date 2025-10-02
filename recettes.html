@@ -1,194 +1,218 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Découvrez des recettes saines sans gluten et sans lactose pour améliorer votre santé et votre bien-être.">
-    <meta name="keywords" content="recettes sans gluten, sans lactose, cuisine saine, santé féminine, santé digestive">
-    <meta name="robots" content="index, follow">
-    <title>Recettes - Cuisine Saine Sans Gluten et Sans Lactose</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
-    <style>
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Montserrat', sans-serif; background-color: #F0EDE5; color: #4A4A4A; margin: 0; padding: 0; background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Cpath fill="%236B3A1E" fill-opacity="0.05" d="M11.5 0L0 11.5V100h100V0z"/%3E%3C/svg%3E'); }
-        h1, h3, h4 { font-family: 'Dancing Script', cursive; color: #6B3A1E; line-height: 1.2; margin: 0; }
-        h2 { font-family: 'Dancing Script', cursive; font-size: 1.6em; line-height: 2.0; letter-spacing: 0.1em; font-style: normal; font-weight: 700; color: #000000; margin: 0; text-transform: uppercase; }
-        .navbar { background-color: #8B4513 !important; margin: 0; }
-        .navbar-brand, .nav-link { color: #F0EDE5 !important; font-weight: 300; }
-        .nav-link:hover { color: #6B3A1E !important; }
-        header { background: linear-gradient(to bottom, #8B4513, #F0EDE5); text-align: center; padding: 30px 0; margin: 0; }
-        main { padding: 20px 0; margin: 0; }
-        .introduction, .conclusion { text-align: center; padding: 20px; font-style: italic; }
-        .table-contents { max-width: 800px; margin: 0 auto 30px; }
-        .table-contents a { color: #6B3A1E; text-decoration: none; transition: color 0.3s; cursor: pointer; }
-        .table-contents a:hover { color: #8B4513; text-decoration: underline; }
-        #recipe-content { max-width: 800px; margin: 0 auto; padding: 20px; background-color: rgba(255,255,255,0.8); border-radius: 15px; opacity: 0; transition: opacity 0.5s ease-in; }
-        #recipe-content.show { opacity: 1; }
-        .back-button { text-align: center; margin-top: 20px; }
-        .back-button button { background-color: #6B3A1E; color: #F0EDE5; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; }
-        .back-button button:hover { background-color: #8B4513; }
-        .error-message { color: red; text-align: center; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recettes - Cuisine Saine Sans Gluten et Sans Lactose</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Montserrat', sans-serif; background-color: #F0EDE5; color: #4A4A4A; margin: 0; padding: 0; background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Cpath fill="%236B3A1E" fill-opacity="0.05" d="M11.5 0L0 11.5V100h100V0z"/%3E%3C/svg%3E'); }
+    h1, h3, h4 { font-family: 'Dancing Script', cursive; color: #6B3A1E; line-height: 1.2; margin: 0; padding: 10px 0; } /* Padding pour marges non fusionnelles */
+    h2 { font-family: 'Dancing Script', cursive; font-size: 1.6em; line-height: 2.0; letter-spacing: 0.1em; font-style: normal; font-weight: 700; color: #000000; margin: 0; text-transform: uppercase; padding: 15px 0; } /* Padding pour juxtaposition */
+    .navbar { background-color: #8B4513 !important; margin: 0; padding: 10px 0; } /* Padding pour espacement */
+    .navbar-brand, .nav-link { color: #F0EDE5 !important; font-weight: 300; }
+    .nav-link:hover { color: #6B3A1E !important; }
+    header { background: linear-gradient(to bottom, #8B4513, #F0EDE5); text-align: center; padding: 30px 0; margin: 0; }
+    main { padding: 20px 0; margin: 0; }
+    .introduction, .conclusion { text-align: center; padding: 20px; font-style: italic; }
+    .card { transition: transform 0.3s ease; padding: 10px; } /* Padding pour non-fusion, transition pour look */
+    .card:hover { transform: scale(1.05); } /* Effet hover */
+    .row { gap: 20px; padding: 0 10px; } /* Gap pour juxtaposition sans fusion de marges, 2 colonnes format */
+    #recipe-content { max-width: 800px; margin: 20px auto; padding: 20px; background-color: rgba(255,255,255,0.8); border-radius: 15px; display: none; }
+    .back-button { text-align: center; padding: 20px 0; } /* Padding pour non-fusion */
+    .btn-brown { background-color: #6B3A1E; color: #F0EDE5; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; margin: 10px; } /* Marges juxtaposées */
+    .btn-brown:hover { background-color: #8B4513; }
+    .tip { background: #FFF3E0; padding: 10px; border-left: 5px solid #FF9800; border-radius: 8px; margin-top: 10px; }
+    .health { background: #E8F5E9; padding: 10px; border-left: 5px solid #4CAF50; border-radius: 8px; margin-top: 10px; }
+  </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">Cuisine Saine Sans Gluten et Sans Lactose</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="recettes.html">Recettes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="achats.html">Achats</a></li>
-                    <li class="nav-item"><a class="nav-link" href="questions.html">Questions/Commentaires</a></li>
-                </ul>
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Cuisine Saine Sans Gluten et Sans Lactose</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="recettes.html">Recettes</a></li>
+          <li class="nav-item"><a class="nav-link" href="fodmap.html">Méthode FODMAP</a></li>
+          <li class="nav-item"><a class="nav-link" href="achats.html">Achats</a></li>
+          <li class="nav-item"><a class="nav-link" href="questions.html">Questions/Commentaires</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Nos Recettes</h1>
+    <p>Sans gluten, sans lactose & sans viande rouge</p>
+  </header>
+
+  <main class="container-fluid">
+    <section class="introduction">
+      <p>Une collection simple de recettes riches en nutriments, faciles à préparer et adaptées aux repas quotidiens pour allier plaisir, gourmandise et santé.</p>
+    </section>
+
+    <!-- Niveau 1 : Catégories (2 colonnes format) -->
+    <section id="categories-container" class="row row-cols-1 row-cols-md-2"></section>
+
+    <!-- Niveau 2 : Recettes d'une catégorie (2 colonnes format) -->
+    <section id="recipes-container" style="display: none;"></section>
+
+    <!-- Niveau 3 : Détail d'une recette -->
+    <section id="recipe-content" style="display: none;"></section>
+
+    <section class="conclusion">
+      <p>Ces recettes démontrent qu'une cuisine saine peut être élégante et gourmande. Régalez-vous !</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023. Avec amour pour votre bien-être.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      // ✅ JSON avec tes recettes (31 intégrées ; ajoute pour 52, le format 2 colonnes reste)
+      const recipesData = {
+        "recipes": [
+          { "title": "Velouté de pommes et céleri au lait d’amande", "category": "Recettes Salées", "ingredients": ["3 pommes Granny Smith", "400 g de céleri-rave", "1 échalote", "500 ml de bouillon de légumes", "200 ml de lait d’amande", "1 c. à soupe d’huile d’olive", "Sel, poivre"], "preparation": ["Éplucher pommes et céleri, couper en dés.", "Faire revenir l’échalote dans l’huile d’olive.", "Ajouter pommes et céleri, couvrir de bouillon.", "Cuire 20 minutes puis mixer.", "Ajouter le lait d’amande, assaisonner et servir chaud."] },
+          { "title": "Salade tiède de pommes caramélisées et noix de pécan", "category": "Recettes Salées", "ingredients": ["2 pommes rouges (Gala ou Fuji)", "80 g de roquette", "50 g de noix de pécan", "1 c. à soupe de sirop d’érable", "2 c. à soupe d’huile de noix", "1 c. à soupe de vinaigre balsamique blanc", "Sel, poivre"], "preparation": ["Couper les pommes en quartiers, les saisir à la poêle avec le sirop d’érable.", "Disposer la roquette dans les assiettes.", "Ajouter les pommes caramélisées et les noix de pécan.", "Arroser de vinaigrette huile de noix + vinaigre balsamique."] },
+          { "title": "Filet de volaille aux pommes et au cidre", "category": "Recettes Salées", "ingredients": ["4 filets de poulet fermier", "2 pommes Golden", "200 ml de cidre brut", "1 échalote", "1 c. à soupe d’huile d’olive", "100 ml de crème de coco", "Sel, poivre, thym frais"], "preparation": ["Faire revenir les filets dans l’huile jusqu’à coloration.", "Ajouter l’échalote émincée et les pommes en quartiers.", "Déglacer avec le cidre, réduire de moitié.", "Incorporer la crème de coco, mijoter 10 minutes.", "Servir avec du thym frais."] },
+          { "title": "Risotto crémeux aux pommes et champignons", "category": "Recettes Salées", "ingredients": ["250 g de riz arborio", "2 pommes Pink Lady", "200 g de champignons", "700 ml de bouillon de légumes", "1 oignon", "2 c. à soupe d’huile d’olive", "100 ml de lait de coco", "Poivre noir"], "preparation": ["Faire revenir l’oignon dans l’huile. Ajouter le riz, nacrer.", "Verser le bouillon petit à petit jusqu’à cuisson (18 min).", "Ajouter champignons sautés et dés de pomme en fin de cuisson.", "Incorporer le lait de coco et poivrer."] },
+          { "title": "Raviolis au poulet (sans gluten & sans lactose)", "category": "Recettes Salées", "portion": 4, "ingredients": { "pate": ["200 g de farine sans gluten (riz ou mélange spécial pâte)", "2 œufs", "1 c. à soupe d’huile d’olive", "1 pincée de sel"], "farce": ["200 g de blanc de poulet cuit et émincé", "1 petit oignon finement haché", "1 gousse d’ail hachée", "1 c. à soupe de persil frais ciselé", "1 c. à soupe d’huile d’olive", "Sel et poivre"] }, "preparation": ["Préparer la pâte : mélanger farine, œufs, huile et sel, puis pétrir. Laisser reposer 30 minutes.", "Préparer la farce : mixer le poulet avec oignon, ail, persil, huile d’olive, sel et poivre.", "Façonner les raviolis : étaler la pâte, découper des cercles, garnir de farce, refermer et sceller.", "Cuire : plonger dans l’eau bouillante salée 3-4 minutes, égoutter et servir."], "astuce": "Servir avec une sauce tomate maison sans lactose ou un filet d’huile d’olive." },
+          { "title": "Croûte de pizza sans gluten & sans lactose", "category": "Recettes Salées", "portion": 4, "ingredients": ["250 g de farine sans gluten (mélange spécial pain/pizza)", "1 c. à café de levure sèche sans gluten", "150 ml d’eau tiède", "2 c. à soupe d’huile d’olive", "1/2 c. à café de sel", "1/2 c. à café de sucre ou sirop d’érable"], "preparation": ["Dans un bol, mélanger l’eau tiède avec la levure et le sucre. Laisser reposer 5 à 10 minutes jusqu’à ce que des bulles se forment.", "Ajouter la farine sans gluten, le sel et l’huile d’olive.", "Mélanger puis pétrir jusqu’à obtenir une pâte souple (ajouter un peu d’eau ou de farine au besoin).", "Couvrir et laisser lever 45 à 60 minutes dans un endroit tiède.", "Préchauffer le four à 220°C (425°F).", "Étaler la pâte sur une plaque recouverte de papier cuisson.", "Précuire la croûte 10 minutes, puis garnir selon vos envies et remettre au four 10-12 minutes."], "astuce": "Pour une croûte plus croustillante, ajouter 1 c. à soupe de farine de pois chiches ou de maïs dans le mélange." },
+          { "title": "Salade de macaroni aux légumineuses (sans gluten & sans lactose)", "category": "Recettes Salées", "portion": 4, "ingredients": ["250 g de pâtes macaroni sans gluten", "1 boîte (400 g) de pois chiches cuits et égouttés", "1 boîte (400 g) de lentilles vertes ou brunes cuites et égouttées", "1 poivron rouge coupé en dés", "1 concombre coupé en dés", "1 carotte râpée", "2 oignons verts émincés", "3 c. à soupe d’huile d’olive", "2 c. à soupe de jus de citron", "1 c. à café de moutarde de Dijon (sans gluten)", "Sel et poivre au goût", "Herbes fraîches au choix (persil, coriandre ou basilic)"], "preparation": ["Cuire les pâtes macaroni sans gluten selon les instructions du paquet, puis les rincer à l’eau froide et bien égoutter.", "Dans un grand saladier, mélanger les pois chiches, les lentilles, le poivron, le concombre, la carotte et les oignons verts.", "Ajouter les pâtes refroidies et mélanger délicatement.", "Dans un petit bol, fouetter l’huile d’olive, le jus de citron, la moutarde, le sel et le poivre.", "Verser la vinaigrette sur la salade et bien mélanger.", "Parsemer d’herbes fraîches avant de servir."], "astuce": "Pour plus de fraîcheur, ajouter quelques tomates cerises ou un peu de maïs. La salade se conserve 2 jours au réfrigérateur." },
+          { "title": "Tartelette fine aux pommes & crème coco-vanille", "category": "Desserts raffinés", "ingredients": ["1 pâte brisée sans gluten", "3 pommes", "200 ml de crème de coco", "1 gousse de vanille", "2 c. à soupe de sirop d’érable"], "preparation": ["Étaler la pâte dans des moules à tartelettes.", "Mélanger crème de coco + vanille + sirop.", "Tartiner la crème, disposer des lamelles de pommes.", "Cuire 20 minutes à 180 °C."] },
+          { "title": "Poires pochées au thé et pommes confites", "category": "Desserts raffinés", "ingredients": ["4 petites poires", "2 pommes", "500 ml de thé noir infusé", "2 c. à soupe de miel", "1 bâton de cannelle"], "preparation": ["Pocher les poires dans le thé sucré au miel et cannelle 20 minutes.", "Caraméliser les pommes à la poêle.", "Servir les poires avec les pommes confites."] },
+          { "title": "Mousse légère pomme-gingembre", "category": "Desserts raffinés", "ingredients": ["3 pommes", "1 c. à café de gingembre frais râpé", "200 ml de crème de coco froide", "2 c. à soupe de sirop d’agave"], "preparation": ["Cuire les pommes en compote avec le gingembre. Refroidir.", "Monter la crème de coco en chantilly.", "Incorporer la compote refroidie délicatement.", "Réserver 1 h au frais."] },
+          { "title": "Millefeuille de pommes caramélisées & crème coco-vanille", "category": "Desserts raffinés", "ingredients": ["3 pommes Golden", "200 ml de crème de coco", "1 gousse de vanille", "1 c. à soupe de sirop d’érable", "1 c. à soupe d’huile de coco"], "preparation": ["Couper les pommes en rondelles, caraméliser à la poêle.", "Monter la crème de coco en chantilly avec vanille + sirop.", "Superposer pommes et crème en couches."] },
+          { "title": "Soufflé léger aux pommes et à la cannelle", "category": "Desserts raffinés", "ingredients": ["2 pommes râpées", "3 œufs", "50 g de sucre de coco", "1 c. à café de cannelle", "1 c. à café de levure sans gluten"], "preparation": ["Mélanger jaunes + pommes + sucre + cannelle + levure.", "Monter les blancs en neige et incorporer.", "Verser dans des ramequins, cuire 12 min à 180 °C."] },
+          { "title": "Carpaccio de pommes à la fleur d’oranger", "category": "Desserts raffinés", "ingredients": ["3 pommes Pink Lady", "1 c. à soupe de miel", "1 c. à soupe d’eau de fleur d’oranger", "Pistaches concassées"], "preparation": ["Couper les pommes en fines tranches.", "Arroser de miel et fleur d’oranger.", "Parsemer de pistaches et servir frais."] },
+          { "title": "Petits moelleux chocolat-pomme", "category": "Desserts raffinés", "ingredients": ["2 pommes râpées", "150 g chocolat noir sans lactose", "2 œufs", "80 g farine de riz", "40 g sucre de coco", "40 ml huile végétale"], "preparation": ["Faire fondre chocolat + huile.", "Mélanger avec œufs, sucre, farine, pommes.", "Cuire 20 min à 180 °C."] },
+          { "title": "Charlotte légère aux pommes et framboises", "category": "Desserts raffinés", "ingredients": ["4 pommes", "150 g framboises", "12 biscuits sans gluten", "200 ml crème de coco", "1 c. à soupe de sirop d’agave"], "preparation": ["Monter crème de coco avec sirop.", "Cuire pommes en compote, refroidir.", "Mélanger compote + framboises + crème.", "Monter la charlotte et laisser 4 h au frais."] },
+          { "title": "Panna cotta coco-pomme", "category": "Desserts raffinés", "ingredients": ["200 ml crème de coco", "1 pomme", "1 c. à café agar-agar", "2 c. à soupe sirop d’érable"], "preparation": ["Faire chauffer crème de coco + agar-agar + sirop.", "Verser dans verrines, refroidir.", "Ajouter compotée de pommes en topping."] },
+          { "title": "Strudel de pommes revisité", "category": "Desserts raffinés", "ingredients": ["3 pommes", "80 g raisins secs", "50 g noix concassées", "1 c. à soupe sirop d’agave", "1 c. à café cannelle", "4 feuilles de riz"], "preparation": ["Ramollir les feuilles de riz.", "Mélanger pommes + raisins + noix + cannelle.", "Rouler et cuire 15 min à 180 °C."] },
+          { "title": "Crème brûlée à la pomme et au lait d’amande", "category": "Desserts raffinés", "ingredients": ["2 pommes", "250 ml lait d’amande", "2 jaunes d’œufs", "50 g de sucre de coco", "1 c. à café vanille"], "preparation": ["Mettre compote de pommes au fond des ramequins.", "Chauffer lait + vanille.", "Mélanger avec jaunes + sucre.", "Cuire au bain-marie 25 min à 160 °C.", "Caraméliser le dessus au chalumeau."] },
+          { "title": "Sorbet pomme-citron", "category": "Desserts raffinés", "ingredients": ["4 pommes", "Jus d’1 citron", "2 c. à soupe sirop d’agave"], "preparation": ["Mixer pommes + citron + sirop.", "Mettre en sorbetière ou congeler en mélangeant toutes les 30 min."] },
+          { "title": "Gâteau renversé pommes et caramel au lait de coco", "category": "Desserts raffinés", "ingredients": ["3 pommes", "100 g farine sans gluten", "2 œufs", "70 g de sucre de coco", "80 ml lait de coco", "2 c. à soupe caramel de coco"], "preparation": ["Verser le caramel dans un moule.", "Ajouter pommes en lamelles.", "Préparer pâte avec farine, œufs, sucre, lait de coco.", "Cuire 30 min à 180 °C, démouler chaud."] },
+          { "title": "Crème glacée aux fraises (sans gluten & sans lactose)", "category": "Desserts raffinés", "portion": 4, "ingredients": ["400 g de fraises fraîches (ou surgelées)", "200 ml de lait de coco bien froid", "2 c. à soupe de sirop d'érable (ou miel, si toléré)", "1 c. à café d'extrait de vanille naturelle", "1 pincée de sel"], "preparation": ["Laver et équeuter les fraises, puis les couper en morceaux.", "Mixer les fraises avec le lait de coco, le sirop d'érable, la vanille et le sel jusqu'à obtenir une texture lisse.", "Verser la préparation dans un récipient hermétique et placer au congélateur pendant au moins 4 heures.", "Remuer toutes les heures avec une fourchette pour éviter les cristaux de glace.", "Sortir du congélateur 5 minutes avant de servir pour plus d'onctuosité."], "astuce": "Ajouter 1/2 avocat ou une banane bien mûre pour une texture plus crémeuse." },
+          { "title": "Cocktail pétillant pomme-romarin", "category": "Boissons gourmandes", "ingredients": ["200 ml jus de pomme frais", "200 ml eau pétillante", "1 branche de romarin frais", "1 c. à soupe sirop d’érable", "Glaçons"], "preparation": ["Mélanger jus de pomme et sirop.", "Verser sur glaçons.", "Compléter avec eau pétillante.", "Ajouter romarin pour décorer."] },
+          { "title": "Smoothie Brûle-Graisse Vert (détox & énergie)", "category": "Boissons gourmandes", "ingredients": ["1 tasse d’épinards frais lavés", "1/2 concombre pelé", "1 pomme verte (sans la peau si désiré)", "1/2 avocat bien mûr", "Le jus d’un demi-citron", "1 petit morceau de gingembre frais (1 à 2 cm)", "200 ml d’eau de coco (sans sucre ajouté) ou d’eau froide", "Quelques glaçons"], "preparation": ["Mettre tous les ingrédients dans un blender.", "Mixer jusqu’à obtenir une texture lisse et onctueuse.", "Goûter et ajuster avec plus de citron si désiré.", "Servir immédiatement bien frais."], "bienfaits": { "citron_et_gingembre": "activent le métabolisme et favorisent la digestion", "epinards_et_concombre": "riches en fibres et hydratants, faibles en calories", "avocat": "apporte de bons gras qui prolongent la satiété", "pomme_verte": "léger sucre naturel, indice glycémique bas", "eau_de_coco": "hydrate et apporte des électrolytes sans lactose" } },
+          { "title": "Poulet au Curcuma et Gingembre", "category": "Recettes Anti-inflammatoires", "ingredients": ["2 poitrines de poulet", "1 c. à soupe de curcuma", "1 c. à soupe de gingembre frais râpé", "2 gousses d’ail émincées", "2 c. à soupe d’huile d’olive", "Jus d’1/2 citron", "Sel, poivre"], "preparation": ["Mélanger huile, curcuma, gingembre, ail et citron.", "Enrober le poulet et laisser mariner 20 min.", "Cuire au four à 200°C (400°F) environ 20 min ou jusqu’à cuisson complète.", "Servir avec légumes verts vapeur."] },
+          { "title": "Saumon au Romarin et Citron", "category": "Recettes Anti-inflammatoires", "ingredients": ["2 pavés de saumon", "1 branche de romarin frais", "1 c. à soupe d’huile d’olive", "1 citron (zeste et jus)", "Sel, poivre"], "preparation": ["Préchauffer le four à 180°C (350°F).", "Déposer le saumon sur une plaque.", "Arroser d’huile d’olive et jus de citron.", "Ajouter zeste, romarin, sel, poivre.", "Cuire 12-15 min."] },
+          { "title": "Porc au Miel et Paprika Doux", "category": "Recettes Anti-inflammatoires", "ingredients": ["300 g de filet de porc", "1 c. à soupe de miel", "1 c. à soupe de paprika doux", "1 c. à soupe de vinaigre de cidre", "1 c. à soupe d’huile d’olive", "Sel, poivre"], "preparation": ["Mélanger miel, vinaigre, huile, paprika.", "Enrober le porc et laisser mariner 30 min.", "Saisir à la poêle puis cuire 15 min au four à 190°C (375°F).", "Servir avec une purée de patate douce."] },
+          { "title": "Filet de Poisson Blanc au Curry Doux", "category": "Recettes Anti-inflammatoires", "ingredients": ["2 filets de poisson blanc (morue, sole, tilapia)", "1 c. à soupe de curry doux", "200 ml de lait de coco", "1 c. à soupe d’huile d’olive", "1 petit oignon émincé", "Sel, poivre"], "preparation": ["Faire revenir l’oignon dans l’huile.", "Ajouter le curry, le lait de coco et mijoter 2 min.", "Ajouter le poisson, couvrir et cuire 8-10 min à feu doux.", "Servir avec du riz basmati."] },
+          { "title": "Tofu Grillé au Sésame et Gingembre", "category": "Recettes Anti-inflammatoires", "ingredients": ["200 g de tofu ferme", "1 c. à soupe de graines de sésame", "2 c. à soupe de sauce tamari sans gluten", "1 c. à soupe de gingembre frais râpé", "1 c. à soupe d’huile de sésame"], "preparation": ["Couper le tofu en cubes.", "Mélanger tamari, gingembre et huile.", "Mariner le tofu 15 min.", "Griller à la poêle ou au four 15 min à 200°C.", "Parsemer de graines de sésame."] },
+          { "title": "Soupe aux Lentilles Corail et Curcuma", "category": "Recettes Anti-inflammatoires", "ingredients": ["200 g de lentilles corail", "1 oignon émincé", "1 c. à soupe de curcuma", "1 c. à café de cumin", "1 L de bouillon de légumes sans gluten", "1 c. à soupe d’huile d’olive"], "preparation": ["Faire revenir l’oignon avec huile et épices.", "Ajouter les lentilles et le bouillon.", "Cuire 20 min à feu doux.", "Mixer si désiré pour une texture lisse."] },
+          { "title": "Patates Douces Rôties au Paprika", "category": "Recettes Anti-inflammatoires", "ingredients": ["2 grosses patates douces", "2 c. à soupe d’huile d’olive", "1 c. à café de paprika", "Sel, poivre"], "preparation": ["Préchauffer le four à 200°C (400°F).", "Couper les patates en cubes.", "Mélanger avec huile, paprika, sel et poivre.", "Cuire 25 min en remuant à mi-cuisson."] },
+          { "title": "Velouté de Courge Butternut au Gingembre", "category": "Recettes Anti-inflammatoires", "ingredients": ["1 courge butternut", "1 c. à soupe de gingembre frais râpé", "1 oignon", "500 ml de bouillon de légumes sans gluten", "1 c. à soupe d’huile d’olive", "Sel, poivre"], "preparation": ["Faire revenir l’oignon et le gingembre.", "Ajouter la courge coupée en morceaux et le bouillon.", "Cuire 20-25 min.", "Mixer pour obtenir un velouté crémeux."] }
+          // 👉 Si tu as plus de recettes (pour atteindre 52), ajoute-les ici dans le tableau. Le format 2 colonnes reste inchangé.
+        ]
+      };
+
+      // Code de navigation
+      const categories = [...new Set(recipesData.recipes.map(r => r.category))];
+      const catContainer = document.getElementById('categories-container');
+      const recContainer = document.getElementById('recipes-container');
+      const recipeDiv = document.getElementById('recipe-content');
+
+      // Afficher catégories (2 colonnes)
+      function showCategories() {
+        catContainer.innerHTML = "";
+        recContainer.style.display = "none";
+        recipeDiv.style.display = "none";
+        catContainer.classList.add('row', 'row-cols-1', 'row-cols-md-2');
+        categories.forEach(cat => {
+          catContainer.innerHTML += `
+            <div class="col">
+              <div class="card h-100 shadow-sm">
+                <img src="https://via.placeholder.com/400x200?text=${encodeURIComponent(cat)}" alt="${cat}">
+                <div class="card-body text-center">
+                  <h5 class="card-title">${cat}</h5>
+                  <button class="btn btn-brown" onclick="showRecipes('${cat}')">Voir les recettes</button>
+                </div>
+              </div>
+            </div>`;
+        });
+      }
+
+      // Afficher recettes (2 colonnes)
+      window.showRecipes = function(category) {
+        catContainer.innerHTML = "";
+        recipeDiv.style.display = "none";
+        recContainer.style.display = "block";
+        recContainer.innerHTML = `<h3 class="mt-3">${category}</h3><div class="row row-cols-1 row-cols-md-2 g-4">`;
+        recipesData.recipes.forEach((r, i) => {
+          if (r.category === category) {
+            recContainer.innerHTML += `
+              <div class="col">
+                <div class="card h-100 shadow-sm">
+                  <img src="https://via.placeholder.com/300x160?text=${encodeURIComponent(r.title)}" alt="${r.title}">
+                  <div class="card-body">
+                    <h5 class="card-title">${r.title}</h5>
+                    <button class="btn btn-brown" onclick="showRecipe(${i})">Voir les détails</button>
+                  </div>
+                </div>
+              </div>`;
+          }
+        });
+        recContainer.innerHTML += `</div><div class="back-button"><button class="btn btn-brown" onclick="showCategories()">Retour aux catégories</button></div>`;
+      };
+
+      // Afficher détail recette
+      window.showRecipe = function(index) {
+        const r = recipesData.recipes[index];
+        recContainer.style.display = "none";
+        recipeDiv.style.display = "block";
+        let ingredientsHTML = '<h4>Ingrédients</h4>';
+        if (Array.isArray(r.ingredients)) {
+          ingredientsHTML += `<ul>${r.ingredients.map(ing => `<li>${ing}</li>`).join('')}</ul>`;
+        } else if (typeof r.ingredients === 'object' && r.ingredients !== null) {
+          for (const part in r.ingredients) {
+            ingredientsHTML += `<h5>${part.charAt(0).toUpperCase() + part.slice(1)}</h5><ul>${r.ingredients[part].map(ing => `<li>${ing}</li>`).join('')}</ul>`;
+          }
+        }
+
+        let bienfaitsHTML = '';
+        if (r.bienfaits) {
+          bienfaitsHTML = '<div class="health"><h4>Bienfaits</h4><ul>';
+          for (const key in r.bienfaits) {
+            bienfaitsHTML += `<li><strong>${key.replace(/_/g, ' ')}:</strong> ${r.bienfaits[key]}</li>`;
+          }
+          bienfaitsHTML += '</ul></div>';
+        }
+
+        recipeDiv.innerHTML = `
+          <div class="card">
+            <div class="card-body">
+              <h3>${r.title}</h3>
+              <p>Catégorie: ${r.category}</p>
+              ${r.portion ? `<p>Portions: ${r.portion}</p>` : ''}
+              ${ingredientsHTML}
+              <h4>Préparation</h4>
+              <ol>${r.preparation.map(step => `<li>${step}</li>`).join('')}</ol>
+              ${r.astuce ? `<div class="tip"><h4>Astuce</h4><p>${r.astuce}</p></div>` : ''}
+              ${bienfaitsHTML}
             </div>
-        </div>
-    </nav>
-    <header>
-        <h1>Délices raffinés aux pommes</h1>
-        <p>Recettes sans gluten & sans lactose</p>
-    </header>
-    <main class="container-fluid">
-        <section class="introduction">
-            <p>Les pommes révèlent toute leur élégance en cuisine : croquantes, parfumées, elles subliment aussi bien les plats salés que les desserts raffinés. Ce livre propose 18 recettes sans gluten et sans lactose pour allier plaisir et santé, en toute simplicité.</p>
-        </section>
-        <section class="table-contents" id="table-contents">
-            <h2>Table des matières</h2>
-            <h3>Recettes salées</h3>
-            <ul>
-                <li><a onclick="showRecipe(0)">Velouté de pommes et céleri au lait d’amande</a></li>
-                <li><a onclick="showRecipe(1)">Salade tiède de pommes caramélisées et noix de pécan</a></li>
-                <li><a onclick="showRecipe(2)">Filet de volaille aux pommes et au cidre</a></li>
-                <li><a onclick="showRecipe(3)">Risotto crémeux aux pommes et champignons</a></li>
-                <li><a onclick="showRecipe(19)">Raviolis au poulet (sans gluten & sans lactose)</a></li>
-                <li><a onclick="showRecipe(21)">Croûte de pizza sans gluten & sans lactose</a></li>
-                <!-- *** LA CORRECTION EST ICI *** -->
-                <li><a onclick="showRecipe(22)">Salade de macaroni aux légumineuses (sans gluten & sans lactose)</a></li>
-            </ul>
-            <h3>Desserts raffinés</h3>
-            <ul>
-                <li><a onclick="showRecipe(4)">Tartelette fine aux pommes & crème coco-vanille</a></li>
-                <li><a onclick="showRecipe(5)">Poires pochées au thé et pommes confites</a></li>
-                <li><a onclick="showRecipe(6)">Mousse légère pomme-gingembre</a></li>
-                <li><a onclick="showRecipe(7)">Millefeuille de pommes caramélisées & crème coco-vanille</a></li>
-                <li><a onclick="showRecipe(8)">Soufflé léger aux pommes et à la cannelle</a></li>
-                <li><a onclick="showRecipe(9)">Carpaccio de pommes à la fleur d’oranger</a></li>
-                <li><a onclick="showRecipe(10)">Petits moelleux chocolat-pomme</a></li>
-                <li><a onclick="showRecipe(11)">Charlotte légère aux pommes et framboises</a></li>
-                <li><a onclick="showRecipe(12)">Panna cotta coco-pomme</a></li>
-                <li><a onclick="showRecipe(13)">Strudel de pommes revisité</a></li>
-                <li><a onclick="showRecipe(14)">Crème brûlée à la pomme et au lait d’amande</a></li>
-                <li><a onclick="showRecipe(15)">Sorbet pomme-citron</a></li>
-                <li><a onclick="showRecipe(16)">Gâteau renversé pommes et caramel au lait de coco</a></li>
-                <li><a onclick="showRecipe(20)">Crème glacée aux fraises (sans gluten & sans lactose)</a></li>
-            </ul>
-            <h3>Boissons gourmandes</h3>
-            <ul>
-                <li><a onclick="showRecipe(17)">Cocktail pétillant pomme-romarin</a></li>
-                <li><a onclick="showRecipe(18)">Smoothie Brûle-Graisse Vert (détox & énergie)</a></li>
-            </ul>
-        </section>
-        <section id="recipe-content" style="display: none;">
-            <!-- Contenu dynamique injecté ici via JS -->
-        </section>
-        <section class="conclusion">
-            <p>Ces recettes démontrent que la pomme peut être élégante et gourmande tout en restant saine. Qu’elle illumine un velouté raffiné, un dessert créatif ou un cocktail pétillant, elle sublime la cuisine sans gluten et sans lactose. Régalez-vous !</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023. Avec amour pour votre bien-être.</p>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    <script>
-        // JSON COMPLET - Contient les 23 recettes.
-        const recipesData = {
-            "recipes": [
-                { "title": "Velouté de pommes et céleri au lait d’amande", "category": "Recettes salées", "ingredients": ["3 pommes Granny Smith", "400 g de céleri-rave", "1 échalote", "500 ml de bouillon de légumes", "200 ml de lait d’amande", "1 c. à soupe d’huile d’olive", "Sel, poivre"], "preparation": ["Éplucher pommes et céleri, couper en dés.", "Faire revenir l’échalote dans l’huile d’olive.", "Ajouter pommes et céleri, couvrir de bouillon.", "Cuire 20 minutes puis mixer.", "Ajouter le lait d’amande, assaisonner et servir chaud."] },
-                { "title": "Salade tiède de pommes caramélisées et noix de pécan", "category": "Recettes salées", "ingredients": ["2 pommes rouges (Gala ou Fuji)", "80 g de roquette", "50 g de noix de pécan", "1 c. à soupe de sirop d’érable", "2 c. à soupe d’huile de noix", "1 c. à soupe de vinaigre balsamique blanc", "Sel, poivre"], "preparation": ["Couper les pommes en quartiers, les saisir à la poêle avec le sirop d’érable.", "Disposer la roquette dans les assiettes.", "Ajouter les pommes caramélisées et les noix de pécan.", "Arroser de vinaigrette huile de noix + vinaigre balsamique."] },
-                { "title": "Filet de volaille aux pommes et au cidre", "category": "Recettes salées", "ingredients": ["4 filets de poulet fermier", "2 pommes Golden", "200 ml de cidre brut", "1 échalote", "1 c. à soupe d’huile d’olive", "100 ml de crème de coco", "Sel, poivre, thym frais"], "preparation": ["Faire revenir les filets dans l’huile jusqu’à coloration.", "Ajouter l’échalote émincée et les pommes en quartiers.", "Déglacer avec le cidre, réduire de moitié.", "Incorporer la crème de coco, mijoter 10 minutes.", "Servir avec du thym frais."] },
-                { "title": "Risotto crémeux aux pommes et champignons", "category": "Recettes salées", "ingredients": ["250 g de riz arborio", "2 pommes Pink Lady", "200 g de champignons", "700 ml de bouillon de légumes", "1 oignon", "2 c. à soupe d’huile d’olive", "100 ml de lait de coco", "Poivre noir"], "preparation": ["Faire revenir l’oignon dans l’huile. Ajouter le riz, nacrer.", "Verser le bouillon petit à petit jusqu’à cuisson (18 min).", "Ajouter champignons sautés et dés de pomme en fin de cuisson.", "Incorporer le lait de coco et poivrer."] },
-                { "title": "Tartelette fine aux pommes & crème coco-vanille", "category": "Desserts raffinés", "ingredients": ["1 pâte brisée sans gluten", "3 pommes", "200 ml de crème de coco", "1 gousse de vanille", "2 c. à soupe de sirop d’érable"], "preparation": ["Étaler la pâte dans des moules à tartelettes.", "Mélanger crème de coco + vanille + sirop.", "Tartiner la crème, disposer des lamelles de pommes.", "Cuire 20 minutes à 180 °C."] },
-                { "title": "Poires pochées au thé et pommes confites", "category": "Desserts raffinés", "ingredients": ["4 petites poires", "2 pommes", "500 ml de thé noir infusé", "2 c. à soupe de miel", "1 bâton de cannelle"], "preparation": ["Pocher les poires dans le thé sucré au miel et cannelle 20 minutes.", "Caraméliser les pommes à la poêle.", "Servir les poires avec les pommes confites."] },
-                { "title": "Mousse légère pomme-gingembre", "category": "Desserts raffinés", "ingredients": ["3 pommes", "1 c. à café de gingembre frais râpé", "200 ml de crème de coco froide", "2 c. à soupe de sirop d’agave"], "preparation": ["Cuire les pommes en compote avec le gingembre. Refroidir.", "Monter la crème de coco en chantilly.", "Incorporer la compote refroidie délicatement.", "Réserver 1 h au frais."] },
-                { "title": "Millefeuille de pommes caramélisées & crème coco-vanille", "category": "Desserts raffinés", "ingredients": ["3 pommes Golden", "200 ml de crème de coco", "1 gousse de vanille", "1 c. à soupe de sirop d’érable", "1 c. à soupe d’huile de coco"], "preparation": ["Couper les pommes en rondelles, caraméliser à la poêle.", "Monter la crème de coco en chantilly avec vanille + sirop.", "Superposer pommes et crème en couches."] },
-                { "title": "Soufflé léger aux pommes et à la cannelle", "category": "Desserts raffinés", "ingredients": ["2 pommes râpées", "3 œufs", "50 g de sucre de coco", "1 c. à café de cannelle", "1 c. à café de levure sans gluten"], "preparation": ["Mélanger jaunes + pommes + sucre + cannelle + levure.", "Monter les blancs en neige et incorporer.", "Verser dans des ramequins, cuire 12 min à 180 °C."] },
-                { "title": "Carpaccio de pommes à la fleur d’oranger", "category": "Desserts raffinés", "ingredients": ["3 pommes Pink Lady", "1 c. à soupe de miel", "1 c. à soupe d’eau de fleur d’oranger", "Pistaches concassées"], "preparation": ["Couper les pommes en fines tranches.", "Arroser de miel et fleur d’oranger.", "Parsemer de pistaches et servir frais."] },
-                { "title": "Petits moelleux chocolat-pomme", "category": "Desserts raffinés", "ingredients": ["2 pommes râpées", "150 g chocolat noir sans lactose", "2 œufs", "80 g farine de riz", "40 g sucre de coco", "40 ml huile végétale"], "preparation": ["Faire fondre chocolat + huile.", "Mélanger avec œufs, sucre, farine, pommes.", "Cuire 20 min à 180 °C."] },
-                { "title": "Charlotte légère aux pommes et framboises", "category": "Desserts raffinés", "ingredients": ["4 pommes", "150 g framboises", "12 biscuits sans gluten", "200 ml crème de coco", "1 c. à soupe de sirop d’agave"], "preparation": ["Monter crème de coco avec sirop.", "Cuire pommes en compote, refroidir.", "Mélanger compote + framboises + crème.", "Monter la charlotte et laisser 4 h au frais."] },
-                { "title": "Panna cotta coco-pomme", "category": "Desserts raffinés", "ingredients": ["200 ml crème de coco", "1 pomme", "1 c. à café agar-agar", "2 c. à soupe sirop d’érable"], "preparation": ["Faire chauffer crème de coco + agar-agar + sirop.", "Verser dans verrines, refroidir.", "Ajouter compotée de pommes en topping."] },
-                { "title": "Strudel de pommes revisité", "category": "Desserts raffinés", "ingredients": ["3 pommes", "80 g raisins secs", "50 g noix concassées", "1 c. à soupe sirop d’agave", "1 c. à café cannelle", "4 feuilles de riz"], "preparation": ["Ramollir les feuilles de riz.", "Mélanger pommes + raisins + noix + cannelle.", "Rouler et cuire 15 min à 180 °C."] },
-                { "title": "Crème brûlée à la pomme et au lait d’amande", "category": "Desserts raffinés", "ingredients": ["2 pommes", "250 ml lait d’amande", "2 jaunes d’œufs", "50 g de sucre de coco", "1 c. à café vanille"], "preparation": ["Mettre compote de pommes au fond des ramequins.", "Chauffer lait + vanille.", "Mélanger avec jaunes + sucre.", "Cuire au bain-marie 25 min à 160 °C.", "Caraméliser le dessus au chalumeau."] },
-                { "title": "Sorbet pomme-citron", "category": "Desserts raffinés", "ingredients": ["4 pommes", "Jus d’1 citron", "2 c. à soupe sirop d’agave"], "preparation": ["Mixer pommes + citron + sirop.", "Mettre en sorbetière ou congeler en mélangeant toutes les 30 min."] },
-                { "title": "Gâteau renversé pommes et caramel au lait de coco", "category": "Desserts raffinés", "ingredients": ["3 pommes", "100 g farine sans gluten", "2 œufs", "70 g de sucre de coco", "80 ml lait de coco", "2 c. à soupe caramel de coco"], "preparation": ["Verser le caramel dans un moule.", "Ajouter pommes en lamelles.", "Préparer pâte avec farine, œufs, sucre, lait de coco.", "Cuire 30 min à 180 °C, démouler chaud."] },
-                { "title": "Cocktail pétillant pomme-romarin", "category": "Boissons gourmandes", "ingredients": ["200 ml jus de pomme frais", "200 ml eau pétillante", "1 branche de romarin frais", "1 c. à soupe sirop d’érable", "Glaçons"], "preparation": ["Mélanger jus de pomme et sirop.", "Verser sur glaçons.", "Compléter avec eau pétillante.", "Ajouter romarin pour décorer."] },
-                { "title": "Smoothie Brûle-Graisse Vert (détox & énergie)", "category": "Boissons gourmandes", "ingredients": ["1 tasse d’épinards frais lavés", "1/2 concombre pelé", "1 pomme verte (sans la peau si désiré)", "1/2 avocat bien mûr", "Le jus d’un demi-citron", "1 petit morceau de gingembre frais (1 à 2 cm)", "200 ml d’eau de coco (sans sucre ajouté) ou d’eau froide", "Quelques glaçons"], "preparation": ["Mettre tous les ingrédients dans un blender.", "Mixer jusqu’à obtenir une texture lisse et onctueuse.", "Goûter et ajuster avec plus de citron si désiré.", "Servir immédiatement bien frais."], "bienfaits": { "citron_et_gingembre": "activent le métabolisme et favorisent la digestion", "epinards_et_concombre": "riches en fibres et hydratants, faibles en calories", "avocat": "apporte de bons gras qui prolongent la satiété", "pomme_verte": "léger sucre naturel, indice glycémique bas", "eau_de_coco": "hydrate et apporte des électrolytes sans lactose" } },
-                { "title": "Raviolis au poulet (sans gluten & sans lactose)", "category": "Recettes salées", "portion": 4, "ingredients": { "pate": ["200 g de farine sans gluten (riz ou mélange spécial pâte)", "2 œufs", "1 c. à soupe d’huile d’olive", "1 pincée de sel"], "farce": ["200 g de blanc de poulet cuit et émincé", "1 petit oignon finement haché", "1 gousse d’ail hachée", "1 c. à soupe de persil frais ciselé", "1 c. à soupe d’huile d’olive", "Sel et poivre"] }, "preparation": ["Préparer la pâte : mélanger farine, œufs, huile et sel, puis pétrir. Laisser reposer 30 minutes.", "Préparer la farce : mixer le poulet avec oignon, ail, persil, huile d’olive, sel et poivre.", "Façonner les raviolis : étaler la pâte, découper des cercles, garnir de farce, refermer et sceller.", "Cuire : plonger dans l’eau bouillante salée 3-4 minutes, égoutter et servir."], "astuce": "Servir avec une sauce tomate maison sans lactose ou un filet d’huile d’olive." },
-                { "title": "Crème glacée aux fraises (sans gluten & sans lactose)", "category": "Desserts raffinés", "portion": 4, "ingredients": ["400 g de fraises fraîches (ou surgelées)", "200 ml de lait de coco bien froid", "2 c. à soupe de sirop d'érable (ou miel, si toléré)", "1 c. à café d'extrait de vanille naturelle", "1 pincée de sel"], "preparation": ["Laver et équeuter les fraises, puis les couper en morceaux.", "Mixer les fraises avec le lait de coco, le sirop d'érable, la vanille et le sel jusqu'à obtenir une texture lisse.", "Verser la préparation dans un récipient hermétique et placer au congélateur pendant au moins 4 heures.", "Remuer toutes les heures avec une fourchette pour éviter les cristaux de glace.", "Sortir du congélateur 5 minutes avant de servir pour plus d'onctuosité."], "astuce": "Ajouter 1/2 avocat ou une banane bien mûre pour une texture plus crémeuse." },
-                { "title": "Croûte de pizza sans gluten & sans lactose", "category": "Recettes salées", "portion": 4, "ingredients": ["250 g de farine sans gluten (mélange spécial pain/pizza)", "1 c. à café de levure sèche sans gluten", "150 ml d’eau tiède", "2 c. à soupe d’huile d’olive", "1/2 c. à café de sel", "1/2 c. à café de sucre ou sirop d’érable"], "preparation": ["Dans un bol, mélanger l’eau tiède avec la levure et le sucre. Laisser reposer 5 à 10 minutes jusqu’à ce que des bulles se forment.", "Ajouter la farine sans gluten, le sel et l’huile d’olive.", "Mélanger puis pétrir jusqu’à obtenir une pâte souple (ajouter un peu d’eau ou de farine au besoin).", "Couvrir et laisser lever 45 à 60 minutes dans un endroit tiède.", "Préchauffer le four à 220°C (425°F).", "Étaler la pâte sur une plaque recouverte de papier cuisson.", "Précuire la croûte 10 minutes, puis garnir selon vos envies et remettre au four 10-12 minutes."], "astuce": "Pour une croûte plus croustillante, ajouter 1 c. à soupe de farine de pois chiches ou de maïs dans le mélange." },
-                { "title": "Salade de macaroni aux légumineuses (sans gluten & sans lactose)", "category": "Recettes salées", "portion": 4, "ingredients": ["250 g de pâtes macaroni sans gluten", "1 boîte (400 g) de pois chiches cuits et égouttés", "1 boîte (400 g) de lentilles vertes ou brunes cuites et égouttées", "1 poivron rouge coupé en dés", "1 concombre coupé en dés", "1 carotte râpée", "2 oignons verts émincés", "3 c. à soupe d’huile d’olive", "2 c. à soupe de jus de citron", "1 c. à café de moutarde de Dijon (sans gluten)", "Sel et poivre au goût", "Herbes fraîches au choix (persil, coriandre ou basilic)"], "preparation": ["Cuire les pâtes macaroni sans gluten selon les instructions du paquet, puis les rincer à l’eau froide et bien égoutter.", "Dans un grand saladier, mélanger les pois chiches, les lentilles, le poivron, le concombre, la carotte et les oignons verts.", "Ajouter les pâtes refroidies et mélanger délicatement.", "Dans un petit bol, fouetter l’huile d’olive, le jus de citron, la moutarde, le sel et le poivre.", "Verser la vinaigrette sur la salade et bien mélanger.", "Parsemer d’herbes fraîches avant de servir."], "astuce": "Pour plus de fraîcheur, ajouter quelques tomates cerises ou un peu de maïs. La salade se conserve 2 jours au réfrigérateur." }
-            ]
-        };
+          </div>
+          <div class="back-button">
+            <button onclick="showRecipes('${r.category}')">Retour aux recettes</button>
+            <button onclick="showCategories()">Retour aux catégories</button>
+          </div>
+        `;
+      };
 
-        function showRecipe(index) {
-            const recipe = recipesData.recipes[index];
-            const contentDiv = document.getElementById('recipe-content');
-            const tableContents = document.getElementById('table-contents');
-
-            if (!recipe) {
-                contentDiv.innerHTML = '<p class="error-message">Recette non trouvée. Veuillez réessayer.</p>';
-                return;
-            }
-
-            tableContents.style.display = 'none';
-
-            let ingredientsHTML = '<h4>Ingrédients</h4>';
-            if (Array.isArray(recipe.ingredients)) {
-                ingredientsHTML += `<ul>${recipe.ingredients.map(ing => `<li>${ing}</li>`).join('')}</ul>`;
-            } else if (typeof recipe.ingredients === 'object' && recipe.ingredients !== null) {
-                for (const part in recipe.ingredients) {
-                    ingredientsHTML += `<h5>${part.charAt(0).toUpperCase() + part.slice(1)}</h5><ul>${recipe.ingredients[part].map(ing => `<li>${ing}</li>`).join('')}</ul>`;
-                }
-            }
-
-            let bienfaitsHTML = '';
-            if (recipe.bienfaits) {
-                bienfaitsHTML = '<h4>Bienfaits</h4><ul>';
-                for (const key in recipe.bienfaits) {
-                    bienfaitsHTML += `<li><strong>${key.replace(/_/g, ' ')}:</strong> ${recipe.bienfaits[key]}</li>`;
-                }
-                bienfaitsHTML += '</ul>';
-            }
-
-            contentDiv.innerHTML = `
-                <div class="card">
-                    <div class="card-body">
-                        <h3>${recipe.title}</h3>
-                        <p>Catégorie: ${recipe.category}</p>
-                        ${recipe.portion ? `<p>Portions: ${recipe.portion}</p>` : ''}
-                        ${ingredientsHTML}
-                        <h4>Préparation</h4>
-                        <ol>${recipe.preparation.map(step => `<li>${step}</li>`).join('')}</ol>
-                        ${recipe.astuce ? `<h4>Astuce</h4><p>${recipe.astuce}</p>` : ''}
-                        ${bienfaitsHTML}
-                    </div>
-                </div>
-                <div class="back-button">
-                    <button onclick="backToTable()">Retour à la table des matières</button>
-                </div>
-            `;
-
-            contentDiv.style.display = 'block';
-            setTimeout(() => contentDiv.classList.add('show'), 10);
-        }
-
-        function backToTable() {
-            document.getElementById('recipe-content').style.display = 'none';
-            document.getElementById('table-contents').style.display = 'block';
-        }
-    </script>
+      // Lancer
+      showCategories();
+    });
+  </script>
 </body>
 </html>
