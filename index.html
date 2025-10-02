@@ -1,72 +1,143 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Découvrez des recettes saines sans gluten et sans lactose pour améliorer votre santé et votre bien-être, adaptées aux femmes de 35-60 ans.">
-    <meta name="keywords" content="cuisine saine, sans gluten, sans lactose, recettes santé, bien-être féminin, santé digestive">
-    <meta name="robots" content="index, follow">
-    <title>Accueil - Cuisine Saine Sans Gluten et Sans Lactose</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Montserrat', sans-serif; background-color: #F0EDE5; color: #4A4A4A; margin: 0; padding: 0; background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Cpath fill="%236B3A1E" fill-opacity="0.05" d="M11.5 0L0 11.5V100h100V0z"/%3E%3C/svg%3E'); } /* Texture boho zen subtile, matifiée */
-        h1, h3 { font-family: 'Dancing Script', cursive; color: #6B3A1E; line-height: 1.2; margin: 0; }
-        h2 { font-family: 'Dancing Script', cursive; font-size: 1.7em; line-height: 2.0; letter-spacing: 0.1em; font-style: normal; font-weight: 700; color: #000000; margin: 0; text-transform: uppercase; } /* h2 augmentés, en majuscules pour "en gros" */
-        .navbar { background-color: #8B4513 !important; margin: 0; }
-        .navbar-brand, .nav-link { color: #F0EDE5 !important; font-weight: 300; }
-        .nav-link:hover { color: #6B3A1E !important; }
-        header { background: linear-gradient(to bottom, #8B4513, #F0EDE5); text-align: center; padding: 30px 0; margin: 0; }
-        main { padding: 20px 0; margin: 0; }
-        .section { padding: 20px; opacity: 0; animation: fadeIn 1.5s ease-in forwards; margin: 0; }
-        .section:nth-child(1) { animation-delay: 0.3s; }
-        .section:nth-child(2) { animation-delay: 0.6s; }
-        .btn-primary { background-color: #6B3A1E; border: none; transition: all 0.3s; margin: 0; font-family: 'Montserrat'; }
-        .btn-primary:hover { background-color: #8B4513; transform: scale(1.05); }
-        img { border-radius: 15px; margin: 0; width: 100%; height: auto; }
-        footer { background-color: #8B4513; color: #F0EDE5; text-align: center; padding: 15px 0; margin: 0; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .romantic-japanese { font-family: 'Dancing Script', cursive; font-size: 1.5em; line-height: 2.0; letter-spacing: 0.1em; font-style: normal; font-weight: 700; color: #000000; } /* Style des h2 appliqué aux paragraphes */
-        .contrast-text { font-size: 1.7em; text-transform: uppercase; font-weight: 900; } /* Augmentation pour le p court, en majuscules pour "en gros" et contraste */
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recettes - Cuisine Saine</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Montserrat', sans-serif; background:#F0EDE5; color:#333; padding:20px; }
+    h1,h3 { font-family:'Dancing Script', cursive; color:#6B3A1E; }
+    .card { transition: transform .3s; }
+    .card:hover { transform: scale(1.03); }
+    .btn-brown { background:#6B3A1E; color:#fff; border:none; padding:8px 16px; border-radius:6px; }
+    .btn-brown:hover { background:#8B4513; }
+    #recipes-container, #recipe-content { display:none; margin-top:20px; }
+  </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">Cuisine Saine Sans Gluten et Sans Lactose</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="recettes.html">Recettes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="achats.html">Achats</a></li>
-                    <li class="nav-item"><a class="nav-link" href="questions.html">Questions/Commentaires</a></li>
-                </ul>
-            </div>
+
+<h1 class="text-center mb-4">Nos Recettes</h1>
+
+<!-- Niveau 1 : Catégories -->
+<div id="categories-container" class="row g-4"></div>
+
+<!-- Niveau 2 : Recettes -->
+<div id="recipes-container" class="row g-4"></div>
+
+<!-- Niveau 3 : Détail -->
+<div id="recipe-content"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", ()=> {
+
+  let recipesData = {recipes:[]};
+
+  // Charger le JSON externe
+  async function loadRecipes(){
+    try {
+      const res = await fetch("recettes.json"); 
+      recipesData = await res.json();
+      showCategories();
+    } catch(e){
+      console.error("Erreur lors du chargement JSON:",e);
+    }
+  }
+
+  const catContainer=document.getElementById("categories-container");
+  const recContainer=document.getElementById("recipes-container");
+  const recipeDiv=document.getElementById("recipe-content");
+
+  // Niveau 1 : afficher catégories
+  function showCategories(){
+    catContainer.innerHTML="";
+    recContainer.style.display="none";
+    recipeDiv.style.display="none";
+    const categories=[...new Set(recipesData.recipes.map(r=>r.category))];
+
+    categories.forEach(cat=>{
+      catContainer.innerHTML += `
+      <div class="col-12 col-md-6">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body text-center">
+            <h5 class="card-title">${cat}</h5>
+            <button class="btn btn-brown" onclick="showRecipes('${cat}')">Voir les recettes</button>
+          </div>
         </div>
-    </nav>
-    <header>
-        <h1>Bienvenue</h1>
-        <p class="romantic-japanese">Redécouvrez le plaisir de manger sainement pour vous sentir vivante et épanouie.</p>
-    </header>
-    <main class="container-fluid">
-        <section class="section text-center">
-            <h2>Pourquoi sans gluten et sans lactose ?</h2>
-            <p class="romantic-japanese contrast-text">À 35-60 ans, optez pour des recettes qui boostent votre vitalité naturelle.</p>
-            <p class="romantic-japanese">Adopter un régime sans lactose est particulièrement bénéfique pour votre santé digestive et métabolique. Sur le plan digestif, il aide à réduire les ballonnements, les gaz et les inconforts intestinaux souvent causés par l'intolérance au lactose, favorisant une digestion plus fluide et un ventre plus plat. Métaboliquement, cela peut améliorer l'absorption des nutriments essentiels, stabiliser votre énergie tout au long de la journée, et même soutenir une meilleure gestion du poids en diminuant l'inflammation chronique. Résultat : vous vous sentez plus légère, plus dynamique et en harmonie avec votre corps – un vrai cadeau pour votre quotidien ! (Consultez un professionnel de santé pour des conseils personnalisés.)</p>
-            <img src="https://source.unsplash.com/random/800x400/?boho-kitchen" alt="Cuisine boho saine" loading="lazy">
-        </section>
-        <section class="section text-center">
-            <h2>Témoignage</h2>
-            <p class="romantic-japanese">"Ces recettes ont apporté de la joie et de l'équilibre à ma vie !" - Marie, 45 ans.</p>
-            <button class="btn btn-primary">Commencer</button>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023. Avec amour pour votre bien-être.</p>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+      </div>`;
+    });
+  }
+
+  // Niveau 2 : recettes d’une catégorie
+  window.showRecipes=function(category){
+    catContainer.style.display="none";
+    recipeDiv.style.display="none";
+    recContainer.style.display="flex";
+    recContainer.innerHTML="";
+
+    recipesData.recipes.forEach((r,i)=>{
+      if(r.category===category){
+        recContainer.innerHTML += `
+        <div class="col-12 col-md-6">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">${r.title}</h5>
+              <button class="btn btn-brown" onclick="showRecipe(${i})">Détails</button>
+            </div>
+          </div>
+        </div>`;
+      }
+    });
+
+    recContainer.innerHTML += `
+      <div class="col-12">
+        <button class="btn btn-brown" onclick="showCategories()">⬅ Retour aux catégories</button>
+      </div>`;
+  }
+
+  // Niveau 3 : détail recette
+  window.showRecipe=function(index){
+    const r=recipesData.recipes[index];
+    recContainer.style.display="none"; 
+    recipeDiv.style.display="block";
+    let ingredientsHTML="";
+    if(Array.isArray(r.ingredients)){
+      ingredientsHTML=`<ul>${r.ingredients.map(i=>`<li>${i}</li>`).join("")}</ul>`;
+    } else {
+      for(const part in r.ingredients){
+        ingredientsHTML += `<h5>${part}</h5><ul>${r.ingredients[part].map(i=>`<li>${i}</li>`).join("")}</ul>`;
+      }
+    }
+    let bienfaitsHTML="";
+    if(r.bienfaits){
+      bienfaitsHTML="<div class='mt-3 p-2 bg-light border rounded'><h5>Bienfaits</h5><ul>";
+      for(const key in r.bienfaits){
+        bienfaitsHTML+=`<li><b>${key.replace(/_/g," ")}:</b> ${r.bienfaits[key]}</li>`;
+      }
+      bienfaitsHTML+="</ul></div>";
+    }
+
+    recipeDiv.innerHTML=`
+      <div class="card">
+        <div class="card-body">
+          <h3>${r.title}</h3>
+          <p><em>${r.category}</em></p>
+          ${r.portion? `<p><b>Portions :</b> ${r.portion}</p>`:""}
+          <h4>Ingrédients</h4>${ingredientsHTML}
+          <h4>Préparation</h4><ol>${r.preparation.map(p=>`<li>${p}</li>`).join("")}</ol>
+          ${r.astuce? `<div class="mt-3 p-2 bg-warning-subtle border rounded"><b>Astuce:</b> ${r.astuce}</div>`:""}
+          ${bienfaitsHTML}
+          <div class="mt-3">
+            <button class="btn btn-brown" onclick="showRecipes('${r.category}')">⬅ Retour aux recettes</button>
+            <button class="btn btn-brown" onclick="showCategories()">⬅ Retour aux catégories</button>
+          </div>
+        </div>
+      </div>`;
+  };
+
+  loadRecipes();
+
+});
+</script>
 </body>
 </html>
