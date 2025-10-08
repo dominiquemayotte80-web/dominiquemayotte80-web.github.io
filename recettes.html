@@ -96,8 +96,8 @@
     const recContainer = document.getElementById('recipes-container');
     const recipeDiv = document.getElementById('recipe-content');
 
+    // Charger le fichier JSON au chargement de la page
     document.addEventListener("DOMContentLoaded", () => {
-      // Charger le fichier JSON
       fetch('recettes.json')
         .then(response => {
           if (!response.ok) {
@@ -120,110 +120,106 @@
     // Afficher catégories (2 colonnes)
     function showCategories() {
       if (!recipesData || !recipesData.recipes) return;
-        
-        const categories = [...new Set(recipesData.recipes.map(r => r.category))];
-        catContainer.innerHTML = "";
-        recContainer.style.display = "none";
-        recipeDiv.style.display = "none";
-        catContainer.classList.add('row', 'row-cols-1', 'row-cols-md-2');
-        
-        categories.forEach(cat => {
-          let imageUrl = `https://via.placeholder.com/400x200?text=${encodeURIComponent(cat)}`;
-          if (cat === "Boissons gourmandes") {
-            imageUrl = "brevage.png";
-          } else if (cat === "Desserts raffinés") {
-            imageUrl = "dessertsalle.png";
-          }
+      
+      const categories = [...new Set(recipesData.recipes.map(r => r.category))];
+      catContainer.innerHTML = "";
+      recContainer.style.display = "none";
+      recipeDiv.style.display = "none";
+      catContainer.classList.add('row', 'row-cols-1', 'row-cols-md-2');
+      
+      categories.forEach(cat => {
+        let imageUrl = `https://via.placeholder.com/400x200?text=${encodeURIComponent(cat)}`;
+        if (cat === "Boissons gourmandes") {
+          imageUrl = "brevage.png";
+        } else if (cat === "Desserts raffinés") {
+          imageUrl = "dessertsalle.png";
+        }
 
-          catContainer.innerHTML += `
+        catContainer.innerHTML += `
+          <div class="col">
+            <div class="card h-100 shadow-sm">
+              <img src="${imageUrl}" class="card-img-top" alt="${cat}">
+              <div class="card-body text-center">
+                <h5 class="card-title">${cat}</h5>
+                <button class="btn btn-brown" onclick="showRecipes('${cat}')">Voir les recettes</button>
+              </div>
+            </div>
+          </div>`;
+      });
+    }
+
+    // Afficher recettes (2 colonnes)
+    function showRecipes(category) {
+      if (!recipesData || !recipesData.recipes) return;
+      
+      catContainer.innerHTML = "";
+      recipeDiv.style.display = "none";
+      recContainer.style.display = "block";
+      recContainer.innerHTML = `<h3 class="mt-3">${category}</h3><div class="row row-cols-1 row-cols-md-2 g-4">`;
+      
+      recipesData.recipes.forEach((r, i) => {
+        if (r.category === category) {
+          recContainer.innerHTML += `
             <div class="col">
               <div class="card h-100 shadow-sm">
-                <img src="${imageUrl}" class="card-img-top" alt="${cat}">
-                <div class="card-body text-center">
-                  <h5 class="card-title">${cat}</h5>
-                  <button class="btn btn-brown" onclick="showRecipes('${cat}')">Voir les recettes</button>
+                <img src="https://via.placeholder.com/300x160?text=${encodeURIComponent(r.title)}" alt="${r.title}" class="card-img-top">
+                <div class="card-body">
+                  <h5 class="card-title">${r.title}</h5>
+                  <button class="btn btn-brown" onclick="showRecipe(${i})">Voir les détails</button>
                 </div>
               </div>
             </div>`;
-        });
+        }
+      });
+      
+      recContainer.innerHTML += `</div><div class="back-button"><button class="btn btn-brown" onclick="showCategories()">Retour aux catégories</button></div>`;
+    }
+
+    // Afficher détail recette
+    function showRecipe(index) {
+      if (!recipesData || !recipesData.recipes) return;
+      
+      const r = recipesData.recipes[index];
+      recContainer.style.display = "none";
+      recipeDiv.style.display = "block";
+      
+      let ingredientsHTML = '<h4>Ingrédients</h4>';
+      if (Array.isArray(r.ingredients)) {
+        ingredientsHTML += `<ul>${r.ingredients.map(ing => `<li>${ing}</li>`).join('')}</ul>`;
+      } else if (typeof r.ingredients === 'object' && r.ingredients !== null) {
+        for (const part in r.ingredients) {
+          ingredientsHTML += `<h5>${part.charAt(0).toUpperCase() + part.slice(1)}</h5><ul>${r.ingredients[part].map(ing => `<li>${ing}</li>`).join('')}</ul>`;
+        }
       }
 
-      // Afficher recettes (2 colonnes)
-      window.showRecipes = function(category) {
-        if (!recipesData || !recipesData.recipes) return;
-        
-        catContainer.innerHTML = "";
-        recipeDiv.style.display = "none";
-        recContainer.style.display = "block";
-        recContainer.innerHTML = `<h3 class="mt-3">${category}</h3><div class="row row-cols-1 row-cols-md-2 g-4">`;
-        
-        recipesData.recipes.forEach((r, i) => {
-          if (r.category === category) {
-            recContainer.innerHTML += `
-              <div class="col">
-                <div class="card h-100 shadow-sm">
-                  <img src="https://via.placeholder.com/300x160?text=${encodeURIComponent(r.title)}" alt="${r.title}" class="card-img-top">
-                  <div class="card-body">
-                    <h5 class="card-title">${r.title}</h5>
-                    <button class="btn btn-brown" onclick="showRecipe(${i})">Voir les détails</button>
-                  </div>
-                </div>
-              </div>`;
-          }
-        });
-        
-        recContainer.innerHTML += `</div><div class="back-button"><button class="btn btn-brown" onclick="showCategories()">Retour aux catégories</button></div>`;
-      };
-
-      // Afficher détail recette
-      window.showRecipe = function(index) {
-        if (!recipesData || !recipesData.recipes) return;
-        
-        const r = recipesData.recipes[index];
-        recContainer.style.display = "none";
-        recipeDiv.style.display = "block";
-        
-        let ingredientsHTML = '<h4>Ingrédients</h4>';
-        if (Array.isArray(r.ingredients)) {
-          ingredientsHTML += `<ul>${r.ingredients.map(ing => `<li>${ing}</li>`).join('')}</ul>`;
-        } else if (typeof r.ingredients === 'object' && r.ingredients !== null) {
-          for (const part in r.ingredients) {
-            ingredientsHTML += `<h5>${part.charAt(0).toUpperCase() + part.slice(1)}</h5><ul>${r.ingredients[part].map(ing => `<li>${ing}</li>`).join('')}</ul>`;
-          }
+      let bienfaitsHTML = '';
+      if (r.bienfaits) {
+        bienfaitsHTML = '<div class="health"><h4>Bienfaits</h4><ul>';
+        for (const key in r.bienfaits) {
+          bienfaitsHTML += `<li><strong>${key.replace(/_/g, ' ')}:</strong> ${r.bienfaits[key]}</li>`;
         }
+        bienfaitsHTML += '</ul></div>';
+      }
 
-        let bienfaitsHTML = '';
-        if (r.bienfaits) {
-          bienfaitsHTML = '<div class="health"><h4>Bienfaits</h4><ul>';
-          for (const key in r.bienfaits) {
-            bienfaitsHTML += `<li><strong>${key.replace(/_/g, ' ')}:</strong> ${r.bienfaits[key]}</li>`;
-          }
-          bienfaitsHTML += '</ul></div>';
-        }
-
-        recipeDiv.innerHTML = `
-          <div class="card">
-            <div class="card-body">
-              <h3>${r.title}</h3>
-              <p>Catégorie: ${r.category}</p>
-              ${r.portion ? `<p>Portions: ${r.portion}</p>` : ''}
-              ${ingredientsHTML}
-              <h4>Préparation</h4>
-              <ol>${r.preparation.map(step => `<li>${step}</li>`).join('')}</ol>
-              ${r.astuce ? `<div class="tip"><h4>Astuce</h4><p>${r.astuce}</p></div>` : ''}
-              ${bienfaitsHTML}
-            </div>
+      recipeDiv.innerHTML = `
+        <div class="card">
+          <div class="card-body">
+            <h3>${r.title}</h3>
+            <p>Catégorie: ${r.category}</p>
+            ${r.portion ? `<p>Portions: ${r.portion}</p>` : ''}
+            ${ingredientsHTML}
+            <h4>Préparation</h4>
+            <ol>${r.preparation.map(step => `<li>${step}</li>`).join('')}</ol>
+            ${r.astuce ? `<div class="tip"><h4>Astuce</h4><p>${r.astuce}</p></div>` : ''}
+            ${bienfaitsHTML}
           </div>
-          <div class="back-button">
-            <button class="btn btn-brown" onclick="showRecipes('${r.category}')">Retour aux recettes</button>
-            <button class="btn btn-brown" onclick="showCategories()">Retour aux catégories</button>
-          </div>
-        `;
-      };
-
-      // Rendre showCategories accessible globalement
-      window.showCategories = showCategories;
-    });
+        </div>
+        <div class="back-button">
+          <button class="btn btn-brown" onclick="showRecipes('${r.category}')">Retour aux recettes</button>
+          <button class="btn btn-brown" onclick="showCategories()">Retour aux catégories</button>
+        </div>
+      `;
+    }
   </script>
 </body>
 </html>
