@@ -60,6 +60,10 @@
     }
     .back-button { text-align: center; padding: 20px 0; }
     
+    /* Liste de définition pour les autres infos */
+    #recipe-content dl { margin-bottom: 0; }
+    #recipe-content dt { font-weight: 600; color: #8B4513; }
+    
     /* Messages d'état */
     .error-message { background: #ffebee; border: 2px solid #ef5350; padding: 20px; margin: 20px auto; border-radius: 10px; text-align: center; color: #c62828; max-width: 600px; }
     .loading { text-align: center; padding: 40px; font-size: 1.2em; color: #6B3A1E; }
@@ -120,39 +124,50 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     // Variables globales
-    let groupedRecipes = {}; // Stocke les recettes regroupées par catégorie
-    let categoryKeys = []; // Ordre des catégories
+    let groupedRecipes = {};
+    let categoryKeys = [];
     
     const catContainer = document.getElementById('categories-container');
     const recContainer = document.getElementById('recipes-container');
     const recipeDiv = document.getElementById('recipe-content');
     const RECIPE_FILE = 'recettes.json'; // NOM DE FICHIER UTILISÉ
 
-    // Fonction principale de regroupement des données
+    // Fonction principale de regroupement et de normalisation des données
     function processData(data) {
       let recipes = [];
 
-      // Logique pour supporter les deux structures de fichier JSON
       if (data.themes) {
-        // Structure 2 : { themes: [{ theme: '...', recettes: [...] }] }
+        // Structure avec 'themes' (celle que vous avez fournie)
         data.themes.forEach(themeObj => {
           themeObj.recettes.forEach(recipe => {
-            recipes.push({ 
+            // Création d'un objet recette normalisé, conservant les autres champs
+            const normalizedRecipe = {
               category: themeObj.theme,
               title: recipe.titre,
               ingredients: recipe.ingredients,
               preparation: recipe.preparation
+            };
+            // Ajout des champs supplémentaires (s'ils existent)
+            Object.keys(recipe).forEach(key => {
+              if (!['titre', 'ingredients', 'preparation'].includes(key)) {
+                normalizedRecipe[key] = recipe[key];
+              }
             });
+            recipes.push(normalizedRecipe);
           });
         });
       } else if (data.recipes) {
-        // Structure 1 : { recipes: [{ category: '...', title: '...', ... }] }
-        recipes = data.recipes;
+        // Structure plate avec 'recipes'
+        recipes = data.recipes.map(r => ({
+          // Assumer que les clés sont déjà en anglais/normalisées ou qu'on utilise la structure originale
+          ...r,
+          title: r.title || r.titre, // S'assurer que 'title' est présent
+        }));
       } else {
         throw new Error("Structure JSON invalide. Manque les clés 'recipes' ou 'themes'.");
       }
 
-      // Regrouper les recettes normalisées par catégorie
+      // Regrouper les recettes par catégorie
       groupedRecipes = recipes.reduce((acc, recipe) => {
         const category = recipe.category;
         if (!acc[category]) {
@@ -202,8 +217,6 @@
       
       categoryKeys.forEach((categoryName, index) => {
         const recipeCount = groupedRecipes[categoryName].length;
-        
-        // Utilisation de l'encodage pour sécuriser le passage de la catégorie dans l'attribut onclick
         const safeCategoryName = encodeURIComponent(categoryName); 
 
         let imageUrl = `https://via.placeholder.com/400x200?text=${encodeURIComponent(categoryName)}`;
@@ -211,7 +224,7 @@
         if (categoryName.includes("Desserts")) {
           imageUrl = "dessertsalle.png"; 
         } else if (categoryName.includes("Soupes")) {
-          imageUrl = "soupe.jpeg"; 
+          imageUrl = "soupe.png"; 
         }
 
         catContainer.innerHTML += `
@@ -230,7 +243,6 @@
 
     // Afficher recettes d'un thème (Niveau 2)
     function showRecipes(encodedCategoryName) {
-      // On décode la catégorie ici
       const categoryName = decodeURIComponent(encodedCategoryName);
       const recipes = groupedRecipes[categoryName];
 
@@ -257,7 +269,6 @@
 
     // Afficher détail recette (Niveau 3)
     function showRecipe(encodedCategoryName, recipeIndex) {
-      // On décode la catégorie ici
       const categoryName = decodeURIComponent(encodedCategoryName);
       const recipes = groupedRecipes[categoryName];
       const r = recipes[recipeIndex];
@@ -265,39 +276,83 @@
       recContainer.style.display = "none";
       recipeDiv.style.display = "block";
       
-      // Formatage des ingrédients en liste
-      let ingredientsHTML = '<h4>Ingrédients</h4>';
-      if (Array.isArray(r.ingredients)) {
-        ingredientsHTML += `<ul>${r.ingredients.map(ing => `<li>${ing}</li>`).join('')}</ul>`;
-      } else if (r.ingredients) {
-        ingredientsHTML += `<p>${r.ingredients}</p>`;
-      }
-      
-      // Formatage de la préparation
-      let preparationText = "Préparation non spécifiée.";
-      if (Array.isArray(r.preparation)) {
-        preparationText = `<ol>${r.preparation.map(step => `<li>${step}</li>`).join('')}</ol>`;
-      } else if (r.preparation) {
-        preparationText = `<p>${r.preparation}</p>`;
-      }
-
-      recipeDiv.innerHTML = `
+      // --- 1. Titre et Catégorie (déjà affichés) ---
+      let contentHTML = `
         <div class="card p-4">
           <div class="card-body">
             <h3>${r.title}</h3>
             <p class="text-muted"><strong>Catégorie:</strong> ${categoryName}</p>
-            ${ingredientsHTML}
-            <h4>Préparation</h4>
-            ${preparationText}
-          </div>
-        </div>
-        <div class="back-button">
+      `;
+
+      // --- 2. Ingrédients (Array ou String) ---
+      if (r.ingredients) {
+        contentHTML += '<h4>Ingrédients</h4>';
+        if (Array.isArray(r.ingredients)) {
+          contentHTML += `<ul>${r.ingredients.map(ing => `<li>${ing}</li>`).join('')}</ul>`;
+        } else {
+          contentHTML += `<p>${r.ingredients}</p>`;
+        }
+      }
+
+      // --- 3. Préparation (Array ou String) ---
+      if (r.preparation) {
+        contentHTML += '<h4>Préparation</h4>';
+        if (Array.isArray(r.preparation)) {
+          // Utilisation d'une liste ordonnée pour les étapes (plus lisible)
+          contentHTML += `<ol>${r.preparation.map(step => `<li>${step}</li>`).join('')}</ol>`;
+        } else {
+          contentHTML += `<p>${r.preparation}</p>`;
+        }
+      }
+
+      // --- 4. Autres informations (champs JSON supplémentaires) ---
+      let extraFieldsHTML = '';
+      // Clés déjà traitées/normalisées (pour exclusion)
+      const excludedKeys = ['category', 'title', 'ingredients', 'preparation', 'titre', 'theme'];
+      const allKeys = Object.keys(r);
+      const extraKeys = allKeys.filter(key => !excludedKeys.includes(key));
+
+      if (extraKeys.length > 0) {
+        extraFieldsHTML += '<h4>Autres informations (détails supplémentaires)</h4><dl class="row">';
+        extraKeys.forEach(key => {
+          const value = r[key];
+          // Formatage de la clé pour l'affichage (ex: "temps_cuisson" -> "Temps cuisson")
+          const formattedKey = key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ');
+          
+          if (value !== null && value !== undefined && value !== '') {
+            let formattedValue;
+            if (Array.isArray(value)) {
+              // Si c'est un tableau, l'afficher comme une liste
+              formattedValue = `<ul>${value.map(item => `<li>${item}</li>`).join('')}</ul>`;
+            } else if (typeof value === 'object' && value !== null) {
+              // Si c'est un objet (non-tableau), l'afficher comme JSON
+              formattedValue = `<pre>${JSON.stringify(value, null, 2)}</pre>`;
+            } else {
+              // Valeur simple
+              formattedValue = String(value);
+            }
+
+            extraFieldsHTML += `
+              <div>
+                <dt class="col-sm-3">${formattedKey}:</dt>
+                <dd class="col-sm-9">${formattedValue}</dd>
+              </div>
+            `;
+          }
+        });
+        extraFieldsHTML += '</dl>';
+      }
+      
+      // Finalisation du contenu
+      contentHTML += extraFieldsHTML + `
+          </div>         </div>         <div class="back-button">
           <button class="btn btn-brown" onclick="showRecipes('${encodedCategoryName}')">Retour aux recettes</button>
           <button class="btn btn-brown" onclick="showCategories()">Retour aux catégories</button>
         </div>
       `;
+
+      recipeDiv.innerHTML = contentHTML;
     }
   </script>
 </body>
 </html>
-
