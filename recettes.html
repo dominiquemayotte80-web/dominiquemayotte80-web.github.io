@@ -65,7 +65,7 @@
 
         <div id="error-message" class="error-message" style="display: none;">
       <h3>⚠️ Erreur de chargement</h3>
-      <p>Impossible de charger le fichier de recettes. Veuillez vérifier son nom **(recipes.json)** et sa présence dans le dossier.</p>
+      <p>Impossible de charger ou d'interpréter les données de recettes. Vérifiez la console pour plus de détails sur la structure du fichier `recipes.json`.</p>
     </div>
 
         <section id="categories-container" class="row row-cols-1 row-cols-md-2 g-4"></section>
@@ -92,58 +92,61 @@
     const catContainer = document.getElementById('categories-container');
     const recContainer = document.getElementById('recipes-container');
     const recipeDiv = document.getElementById('recipe-content');
-    const RECIPE_FILE = 'recipes.json'; // Nom de fichier corrigé
+    const RECIPE_FILE = 'recipes.json'; // Nom de fichier : recipes.json
 
     // Charger le fichier JSON au chargement de la page
     document.addEventListener("DOMContentLoaded", () => {
       fetch(RECIPE_FILE)
         .then(response => {
           if (!response.ok) {
-            throw new Error(`Fichier ${RECIPE_FILE} introuvable`);
+            // Ceci attrape une erreur 404/403/etc.
+            throw new Error(`Fichier ${RECIPE_FILE} introuvable ou erreur de réseau.`);
           }
           return response.json();
         })
         .then(data => {
           recipesData = data;
+          console.log("✅ Données JSON chargées :", recipesData); // VERIFIEZ CECI !
           
           document.getElementById('loading').style.display = 'none';
           
           // Trier les thèmes par ordre alphabétique pour la navigation
-          if (recipesData.themes) {
+          if (recipesData && Array.isArray(recipesData.themes) && recipesData.themes.length > 0) {
             sortedThemes = [...recipesData.themes].sort((a, b) => 
               a.theme.localeCompare(b.theme, 'fr')
             );
             showCategories();
           } else {
-            throw new Error("La structure JSON ne contient pas la clé 'themes'.");
+            // Erreur silencieuse d'accès aux données.
+            throw new Error("La clé 'themes' est manquante, vide ou n'est pas un tableau.");
           }
         })
         .catch(error => {
-          console.error('Erreur lors du chargement:', error);
+          console.error('Erreur fatale lors du traitement:', error);
           document.getElementById('loading').style.display = 'none';
           document.getElementById('error-message').style.display = 'block';
+          // Afficher l'erreur dans le message d'erreur si possible
+          document.querySelector('#error-message p').textContent = `Erreur: ${error.message}. Vérifiez le fichier ${RECIPE_FILE}.`;
         });
     });
 
     // Afficher catégories (2 colonnes) - triées alphabétiquement
     function showCategories() {
-      catContainer.style.display = "flex"; // S'assurer que le conteneur est visible
+      catContainer.style.display = "flex";
       recContainer.style.display = "none";
       recipeDiv.style.display = "none";
       catContainer.innerHTML = "";
       
       sortedThemes.forEach((themeObj, index) => {
         const themeName = themeObj.theme;
-        // Utilise themeObj.recettes.length (compatible avec la nouvelle structure)
         const recipeCount = themeObj.recettes.length; 
         
         let imageUrl = `https://via.placeholder.com/400x200?text=${encodeURIComponent(themeName)}`;
         
-        // Images personnalisées selon les catégories
         if (themeName.includes("Desserts")) {
-          imageUrl = "dessertsalle.png"; // Image hypothétique
+          imageUrl = "dessertsalle.png"; 
         } else if (themeName.includes("Soupes")) {
-          imageUrl = "soupe.png"; // Image hypothétique
+          imageUrl = "soupe.png"; 
         }
 
         catContainer.innerHTML += `
@@ -166,7 +169,7 @@
 
       const themeObj = sortedThemes[themeIndex];
       const themeName = themeObj.theme;
-      const recipes = themeObj.recettes; // Utilise la clé 'recettes'
+      const recipes = themeObj.recettes;
       
       catContainer.style.display = "none";
       recipeDiv.style.display = "none";
@@ -174,7 +177,6 @@
       recContainer.innerHTML = `<h3 class="mt-3">${themeName}</h3><div class="row row-cols-1 row-cols-md-2 g-4">`;
       
       recipes.forEach((r, i) => {
-        // Utilise r.titre (compatible avec la nouvelle structure)
         recContainer.innerHTML += ` 
           <div class="col">
             <div class="card h-100 shadow-sm">
@@ -205,7 +207,9 @@
         ingredientsHTML += `<ul>${r.ingredients.map(ing => `<li>${ing}</li>`).join('')}</ul>`;
       }
       
-      // Utilise r.titre et r.preparation (compatible avec la nouvelle structure, preparation est un string)
+      // Gérer le champ preparation (qui est un string dans votre JSON fourni)
+      const preparationText = r.preparation || "Préparation non spécifiée.";
+
       recipeDiv.innerHTML = `
         <div class="card">
           <div class="card-body">
@@ -213,7 +217,7 @@
             <p><strong>Catégorie:</strong> ${themeObj.theme}</p>
             ${ingredientsHTML}
             <h4>Préparation</h4>
-            <p>${r.preparation}</p>
+            <p>${preparationText}</p>
           </div>
         </div>
         <div class="back-button">
