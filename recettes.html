@@ -7,27 +7,61 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
   <style>
+    /* Styles généraux */
     html { scroll-behavior: smooth; }
     body { font-family: 'Montserrat', sans-serif; background-color: #F0EDE5; color: #4A4A4A; margin: 0; padding: 0; background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Cpath fill="%236B3A1E" fill-opacity="0.05" d="M11.5 0L0 11.5V100h100V0z"/%3E%3C/svg%3E'); }
+    
+    /* Typographie élégante */
     h1, h3, h4 { font-family: 'Dancing Script', cursive; color: #6B3A1E; line-height: 1.2; margin: 0; padding: 10px 0; }
     h2 { font-family: 'Dancing Script', cursive; font-size: 1.6em; line-height: 2.0; letter-spacing: 0.1em; font-style: normal; font-weight: 700; color: #000000; margin: 0; text-transform: uppercase; padding: 15px 0; }
-    .navbar { background-color: #8B4513 !important; margin: 0; padding: 10px 0; }
+    
+    /* Navigation et en-tête */
+    .navbar { background-color: #8B4513 !important; padding: 10px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
     .navbar-brand, .nav-link { color: #F0EDE5 !important; font-weight: 300; }
-    .nav-link:hover { color: #6B3A1E !important; }
-    header { background: linear-gradient(to bottom, #8B4513, #F0EDE5); text-align: center; padding: 30px 0; margin: 0; }
-    main { padding: 20px 0; margin: 0; }
-    .introduction, .conclusion { text-align: center; padding: 20px; font-style: italic; }
-    .card { transition: transform 0.3s ease; padding: 10px; }
-    .card:hover { transform: scale(1.05); }
+    .nav-link:hover { color: #D4B483 !important; }
+    header { background: linear-gradient(to bottom, #8B4513, #F0EDE5); text-align: center; padding: 30px 0; margin: 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    
+    /* Contenu principal */
+    main { padding: 20px 0; }
+    .introduction, .conclusion { text-align: center; padding: 20px; font-style: italic; color: #6B3A1E; }
+    
+    /* Cartes de recettes/catégories (Amélioration du look) */
+    .card { 
+      transition: transform 0.3s ease, box-shadow 0.3s ease; 
+      border: none; /* Supprimer la bordure par défaut de Bootstrap */
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .card:hover { 
+      transform: translateY(-5px); /* Légère élévation */
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* Ombre plus marquée */
+    }
     .card-img-top { height: 200px; object-fit: cover; }
-    .row { gap: 20px; padding: 0 10px; }
-    #recipe-content { max-width: 800px; margin: 20px auto; padding: 20px; background-color: rgba(255,255,255,0.8); border-radius: 15px; display: none; }
+    .row { gap: 20px 0; padding: 0 10px; margin: 0; }
+    
+    /* Affichage d'une seule recette */
+    #recipe-content { max-width: 800px; margin: 20px auto; padding: 30px; background-color: rgba(255,255,255,0.95); border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    
+    /* Boutons bruns élégants */
+    .btn-brown { 
+      background-color: #6B3A1E; 
+      color: #F0EDE5; 
+      border: none; 
+      padding: 10px 20px; 
+      border-radius: 5px; 
+      cursor: pointer; 
+      transition: background-color 0.3s, transform 0.1s; 
+      margin: 10px 5px; 
+    }
+    .btn-brown:hover { 
+      background-color: #8B4513; 
+      color: #FFF; 
+      transform: translateY(-1px);
+    }
     .back-button { text-align: center; padding: 20px 0; }
-    .btn-brown { background-color: #6B3A1E; color: #F0EDE5; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; margin: 10px; }
-    .btn-brown:hover { background-color: #8B4513; }
-    .tip { background: #FFF3E0; padding: 10px; border-left: 5px solid #FF9800; border-radius: 8px; margin-top: 10px; }
-    .health { background: #E8F5E9; padding: 10px; border-left: 5px solid #4CAF50; border-radius: 8px; margin-top: 10px; }
-    .error-message { background: #ffebee; border: 2px solid #ef5350; padding: 20px; margin: 20px; border-radius: 10px; text-align: center; color: #c62828; }
+    
+    /* Messages d'état */
+    .error-message { background: #ffebee; border: 2px solid #ef5350; padding: 20px; margin: 20px auto; border-radius: 10px; text-align: center; color: #c62828; max-width: 600px; }
     .loading { text-align: center; padding: 40px; font-size: 1.2em; color: #6B3A1E; }
   </style>
 </head>
@@ -65,7 +99,7 @@
 
         <div id="error-message" class="error-message" style="display: none;">
       <h3>⚠️ Erreur de chargement</h3>
-      <p>Impossible de charger ou d'interpréter les données de recettes. Vérifiez la console pour plus de détails sur la structure du fichier `recettes.json`.</p>
+      <p id="error-text">Impossible de charger le fichier de recettes. Veuillez vérifier son nom **(recettes.json)** et sa structure (doit contenir une clé `recipes` ou `themes`).</p>
     </div>
 
         <section id="categories-container" class="row row-cols-1 row-cols-md-2 g-4"></section>
@@ -86,104 +120,132 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     // Variables globales
-    let recipesData = null; // Contiendra l'objet JSON complet
-    let sortedThemes = []; // Contiendra la liste des thèmes triés pour la navigation
+    let groupedRecipes = {}; // Stocke les recettes regroupées par catégorie
+    let categoryKeys = []; // Ordre des catégories
     
     const catContainer = document.getElementById('categories-container');
     const recContainer = document.getElementById('recipes-container');
     const recipeDiv = document.getElementById('recipe-content');
-    const RECIPE_FILE = 'recettes.json'; 
+    const RECIPE_FILE = 'recettes.json'; // 🚩 NOM DE FICHIER CORRIGÉ 🚩
+
+    // Fonction principale de regroupement des données
+    function processData(data) {
+      let recipes = [];
+
+      // Logique pour supporter les deux structures de fichier JSON fournies précédemment
+      if (data.themes) {
+        // Structure 2 : { themes: [{ theme: '...', recettes: [...] }] }
+        data.themes.forEach(themeObj => {
+          themeObj.recettes.forEach(recipe => {
+            // Normalisation des clés pour la compatibilité
+            recipes.push({ 
+              category: themeObj.theme, // Utilise 'theme' comme 'category'
+              title: recipe.titre, // Utilise 'titre' comme 'title'
+              ingredients: recipe.ingredients,
+              preparation: recipe.preparation
+            });
+          });
+        });
+      } else if (data.recipes) {
+        // Structure 1 (Originale) : { recipes: [{ category: '...', title: '...', ... }] }
+        recipes = data.recipes;
+      } else {
+        throw new Error("Structure JSON invalide. Manque les clés 'recipes' ou 'themes'.");
+      }
+
+      // Regrouper les recettes normalisées par catégorie
+      groupedRecipes = recipes.reduce((acc, recipe) => {
+        const category = recipe.category;
+        if (!acc[category]) {
+          acc[category] = [];
+        }
+        acc[category].push(recipe);
+        return acc;
+      }, {});
+
+      // Trier les catégories par ordre alphabétique
+      categoryKeys = Object.keys(groupedRecipes).sort((a, b) => a.localeCompare(b, 'fr'));
+      
+      if (categoryKeys.length === 0) {
+        throw new Error("Aucune recette trouvée après le traitement des données.");
+      }
+      
+      showCategories();
+    }
+
 
     // Charger le fichier JSON au chargement de la page
     document.addEventListener("DOMContentLoaded", () => {
       fetch(RECIPE_FILE)
         .then(response => {
           if (!response.ok) {
-            // Ceci attrape une erreur 404/403/etc.
-            throw new Error(`Fichier ${RECIPE_FILE} introuvable ou erreur de réseau.`);
+            throw new Error(`Erreur de réseau ou fichier ${RECIPE_FILE} introuvable (Code: ${response.status}).`);
           }
           return response.json();
         })
         .then(data => {
-          recipesData = data;
-          console.log("✅ Données JSON chargées :", recipesData); // VERIFIEZ CECI !
-          
           document.getElementById('loading').style.display = 'none';
-          
-          // Trier les thèmes par ordre alphabétique pour la navigation
-          if (recipesData && Array.isArray(recipesData.themes) && recipesData.themes.length > 0) {
-            sortedThemes = [...recipesData.themes].sort((a, b) => 
-              a.theme.localeCompare(b.theme, 'fr')
-            );
-            showCategories();
-          } else {
-            // Erreur silencieuse d'accès aux données.
-            throw new Error("La clé 'themes' est manquante, vide ou n'est pas un tableau.");
-          }
+          processData(data); // Appeler la fonction de traitement robuste
         })
         .catch(error => {
-          console.error('Erreur fatale lors du traitement:', error);
+          console.error('Erreur de chargement ou de traitement:', error);
           document.getElementById('loading').style.display = 'none';
           document.getElementById('error-message').style.display = 'block';
-          // Afficher l'erreur dans le message d'erreur si possible
-          document.querySelector('#error-message p').textContent = `Erreur: ${error.message}. Vérifiez le fichier ${RECIPE_FILE}.`;
+          document.getElementById('error-text').textContent = `Erreur: ${error.message}`;
         });
     });
 
-    // Afficher catégories (2 colonnes) - triées alphabétiquement
+    // Afficher catégories (Niveau 1)
     function showCategories() {
       catContainer.style.display = "flex";
       recContainer.style.display = "none";
       recipeDiv.style.display = "none";
       catContainer.innerHTML = "";
       
-      sortedThemes.forEach((themeObj, index) => {
-        const themeName = themeObj.theme;
-        const recipeCount = themeObj.recettes.length; 
+      categoryKeys.forEach((categoryName, index) => {
+        const recipeCount = groupedRecipes[categoryName].length;
         
-        let imageUrl = `https://via.placeholder.com/400x200?text=${encodeURIComponent(themeName)}`;
+        let imageUrl = `https://via.placeholder.com/400x200?text=${encodeURIComponent(categoryName)}`;
         
-        if (themeName.includes("Desserts")) {
+        // Images personnalisées (si les fichiers sont présents dans le dossier)
+        if (categoryName.includes("Desserts")) {
           imageUrl = "dessertsalle.png"; 
-        } else if (themeName.includes("Soupes")) {
+        } else if (categoryName.includes("Soupes")) {
           imageUrl = "soupe.png"; 
         }
 
         catContainer.innerHTML += `
           <div class="col">
             <div class="card h-100 shadow-sm">
-              <img src="${imageUrl}" class="card-img-top" alt="${themeName}">
+              <img src="${imageUrl}" class="card-img-top" alt="Image pour ${categoryName}">
               <div class="card-body text-center">
-                <h5 class="card-title">${themeName}</h5>
+                <h5 class="card-title">${categoryName}</h5>
                 <p class="text-muted">${recipeCount} recette${recipeCount > 1 ? 's' : ''}</p>
-                <button class="btn btn-brown" onclick="showRecipes(${index})">Voir les recettes</button>
+                <button class="btn btn-brown" onclick="showRecipes('${categoryName}')">Voir les recettes</button>
               </div>
             </div>
           </div>`;
       });
     }
 
-    // Afficher recettes d'un thème (2 colonnes)
-    function showRecipes(themeIndex) {
-      if (!sortedThemes[themeIndex]) return;
+    // Afficher recettes d'un thème (Niveau 2)
+    function showRecipes(categoryName) {
+      const recipes = groupedRecipes[categoryName];
 
-      const themeObj = sortedThemes[themeIndex];
-      const themeName = themeObj.theme;
-      const recipes = themeObj.recettes;
-      
       catContainer.style.display = "none";
       recipeDiv.style.display = "none";
       recContainer.style.display = "block";
-      recContainer.innerHTML = `<h3 class="mt-3">${themeName}</h3><div class="row row-cols-1 row-cols-md-2 g-4">`;
+      recContainer.innerHTML = `<h3 class="mt-3 text-center">${categoryName}</h3><div class="row row-cols-1 row-cols-md-2 g-4">`;
       
       recipes.forEach((r, i) => {
-        recContainer.innerHTML += ` 
+        // Note : Le titre de la recette est r.title
+        recContainer.innerHTML += `
           <div class="col">
             <div class="card h-100 shadow-sm">
-              <img src="https://via.placeholder.com/300x160?text=${encodeURIComponent(r.titre)}" alt="${r.titre}" class="card-img-top">
+              <img src="https://via.placeholder.com/300x160?text=${encodeURIComponent(r.title)}" alt="${r.title}" class="card-img-top">
               <div class="card-body">
-                <h5 class="card-title">${r.titre}</h5>
-                <button class="btn btn-brown" onclick="showRecipe(${themeIndex}, ${i})">Voir les détails</button>
+                <h5 class="card-title">${r.title}</h5>
+                <button class="btn btn-brown" onclick="showRecipe('${categoryName}', ${i})">Voir les détails</button>
               </div>
             </div>
           </div>`;
@@ -192,36 +254,44 @@
       recContainer.innerHTML += `</div><div class="back-button"><button class="btn btn-brown" onclick="showCategories()">Retour aux catégories</button></div>`;
     }
 
-    // Afficher détail recette
-    function showRecipe(themeIndex, recipeIndex) {
-      if (!sortedThemes[themeIndex]) return;
-
-      const themeObj = sortedThemes[themeIndex];
-      const r = themeObj.recettes[recipeIndex];
+    // Afficher détail recette (Niveau 3)
+    function showRecipe(categoryName, recipeIndex) {
+      const recipes = groupedRecipes[categoryName];
+      const r = recipes[recipeIndex];
       
       recContainer.style.display = "none";
       recipeDiv.style.display = "block";
       
+      // Formatage des ingrédients en liste (compatible avec les tableaux)
       let ingredientsHTML = '<h4>Ingrédients</h4>';
       if (Array.isArray(r.ingredients)) {
         ingredientsHTML += `<ul>${r.ingredients.map(ing => `<li>${ing}</li>`).join('')}</ul>`;
+      } else if (r.ingredients) {
+        ingredientsHTML += `<p>${r.ingredients}</p>`;
       }
       
-      // Gérer le champ preparation (qui est un string dans votre JSON fourni)
-      const preparationText = r.preparation || "Préparation non spécifiée.";
+      // Formatage de la préparation (compatible avec les tableaux ou les chaînes de caractères)
+      let preparationText = "Préparation non spécifiée.";
+      if (Array.isArray(r.preparation)) {
+        // Si c'est un tableau, on utilise des numéros d'étapes (plus lisible)
+        preparationText = `<ol>${r.preparation.map(step => `<li>${step}</li>`).join('')}</ol>`;
+      } else if (r.preparation) {
+        // Si c'est une chaîne de caractères, on l'affiche directement
+        preparationText = `<p>${r.preparation}</p>`;
+      }
 
       recipeDiv.innerHTML = `
-        <div class="card">
+        <div class="card p-4">
           <div class="card-body">
-            <h3>${r.titre}</h3>
-            <p><strong>Catégorie:</strong> ${themeObj.theme}</p>
+            <h3>${r.title}</h3>
+            <p class="text-muted"><strong>Catégorie:</strong> ${categoryName}</p>
             ${ingredientsHTML}
             <h4>Préparation</h4>
-            <p>${preparationText}</p>
+            ${preparationText}
           </div>
         </div>
         <div class="back-button">
-          <button class="btn btn-brown" onclick="showRecipes(${themeIndex})">Retour aux recettes</button>
+          <button class="btn btn-brown" onclick="showRecipes('${categoryName}')">Retour aux recettes</button>
           <button class="btn btn-brown" onclick="showCategories()">Retour aux catégories</button>
         </div>
       `;
@@ -229,6 +299,3 @@
   </script>
 </body>
 </html>
-
-
-
