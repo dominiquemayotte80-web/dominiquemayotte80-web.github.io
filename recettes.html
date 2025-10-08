@@ -98,7 +98,7 @@
 
     // Charger le fichier JSON au chargement de la page
     document.addEventListener("DOMContentLoaded", () => {
-      fetch('recettes_sans_gluten (1).json')
+      fetch('recettes.json')
         .then(response => {
           if (!response.ok) {
             throw new Error('Fichier recettes_sans_gluten (1).json introuvable');
@@ -229,3 +229,4 @@
   </script>
 </body>
 </html>
+
