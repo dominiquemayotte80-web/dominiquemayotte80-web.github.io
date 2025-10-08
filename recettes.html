@@ -126,28 +126,27 @@
     const catContainer = document.getElementById('categories-container');
     const recContainer = document.getElementById('recipes-container');
     const recipeDiv = document.getElementById('recipe-content');
-    const RECIPE_FILE = 'recettes.json'; // 🚩 NOM DE FICHIER CORRIGÉ 🚩
+    const RECIPE_FILE = 'recettes.json'; // NOM DE FICHIER UTILISÉ
 
     // Fonction principale de regroupement des données
     function processData(data) {
       let recipes = [];
 
-      // Logique pour supporter les deux structures de fichier JSON fournies précédemment
+      // Logique pour supporter les deux structures de fichier JSON
       if (data.themes) {
         // Structure 2 : { themes: [{ theme: '...', recettes: [...] }] }
         data.themes.forEach(themeObj => {
           themeObj.recettes.forEach(recipe => {
-            // Normalisation des clés pour la compatibilité
             recipes.push({ 
-              category: themeObj.theme, // Utilise 'theme' comme 'category'
-              title: recipe.titre, // Utilise 'titre' comme 'title'
+              category: themeObj.theme,
+              title: recipe.titre,
               ingredients: recipe.ingredients,
               preparation: recipe.preparation
             });
           });
         });
       } else if (data.recipes) {
-        // Structure 1 (Originale) : { recipes: [{ category: '...', title: '...', ... }] }
+        // Structure 1 : { recipes: [{ category: '...', title: '...', ... }] }
         recipes = data.recipes;
       } else {
         throw new Error("Structure JSON invalide. Manque les clés 'recipes' ou 'themes'.");
@@ -163,7 +162,6 @@
         return acc;
       }, {});
 
-      // Trier les catégories par ordre alphabétique
       categoryKeys = Object.keys(groupedRecipes).sort((a, b) => a.localeCompare(b, 'fr'));
       
       if (categoryKeys.length === 0) {
@@ -185,7 +183,7 @@
         })
         .then(data => {
           document.getElementById('loading').style.display = 'none';
-          processData(data); // Appeler la fonction de traitement robuste
+          processData(data);
         })
         .catch(error => {
           console.error('Erreur de chargement ou de traitement:', error);
@@ -205,9 +203,11 @@
       categoryKeys.forEach((categoryName, index) => {
         const recipeCount = groupedRecipes[categoryName].length;
         
+        // Utilisation de l'encodage pour sécuriser le passage de la catégorie dans l'attribut onclick
+        const safeCategoryName = encodeURIComponent(categoryName); 
+
         let imageUrl = `https://via.placeholder.com/400x200?text=${encodeURIComponent(categoryName)}`;
         
-        // Images personnalisées (si les fichiers sont présents dans le dossier)
         if (categoryName.includes("Desserts")) {
           imageUrl = "dessertsalle.png"; 
         } else if (categoryName.includes("Soupes")) {
@@ -221,7 +221,7 @@
               <div class="card-body text-center">
                 <h5 class="card-title">${categoryName}</h5>
                 <p class="text-muted">${recipeCount} recette${recipeCount > 1 ? 's' : ''}</p>
-                <button class="btn btn-brown" onclick="showRecipes('${categoryName}')">Voir les recettes</button>
+                <button class="btn btn-brown" onclick="showRecipes('${safeCategoryName}')">Voir les recettes</button>
               </div>
             </div>
           </div>`;
@@ -229,7 +229,9 @@
     }
 
     // Afficher recettes d'un thème (Niveau 2)
-    function showRecipes(categoryName) {
+    function showRecipes(encodedCategoryName) {
+      // On décode la catégorie ici
+      const categoryName = decodeURIComponent(encodedCategoryName);
       const recipes = groupedRecipes[categoryName];
 
       catContainer.style.display = "none";
@@ -238,14 +240,13 @@
       recContainer.innerHTML = `<h3 class="mt-3 text-center">${categoryName}</h3><div class="row row-cols-1 row-cols-md-2 g-4">`;
       
       recipes.forEach((r, i) => {
-        // Note : Le titre de la recette est r.title
         recContainer.innerHTML += `
           <div class="col">
             <div class="card h-100 shadow-sm">
               <img src="https://via.placeholder.com/300x160?text=${encodeURIComponent(r.title)}" alt="${r.title}" class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">${r.title}</h5>
-                <button class="btn btn-brown" onclick="showRecipe('${categoryName}', ${i})">Voir les détails</button>
+                <button class="btn btn-brown" onclick="showRecipe('${encodedCategoryName}', ${i})">Voir les détails</button>
               </div>
             </div>
           </div>`;
@@ -255,14 +256,16 @@
     }
 
     // Afficher détail recette (Niveau 3)
-    function showRecipe(categoryName, recipeIndex) {
+    function showRecipe(encodedCategoryName, recipeIndex) {
+      // On décode la catégorie ici
+      const categoryName = decodeURIComponent(encodedCategoryName);
       const recipes = groupedRecipes[categoryName];
       const r = recipes[recipeIndex];
       
       recContainer.style.display = "none";
       recipeDiv.style.display = "block";
       
-      // Formatage des ingrédients en liste (compatible avec les tableaux)
+      // Formatage des ingrédients en liste
       let ingredientsHTML = '<h4>Ingrédients</h4>';
       if (Array.isArray(r.ingredients)) {
         ingredientsHTML += `<ul>${r.ingredients.map(ing => `<li>${ing}</li>`).join('')}</ul>`;
@@ -270,13 +273,11 @@
         ingredientsHTML += `<p>${r.ingredients}</p>`;
       }
       
-      // Formatage de la préparation (compatible avec les tableaux ou les chaînes de caractères)
+      // Formatage de la préparation
       let preparationText = "Préparation non spécifiée.";
       if (Array.isArray(r.preparation)) {
-        // Si c'est un tableau, on utilise des numéros d'étapes (plus lisible)
         preparationText = `<ol>${r.preparation.map(step => `<li>${step}</li>`).join('')}</ol>`;
       } else if (r.preparation) {
-        // Si c'est une chaîne de caractères, on l'affiche directement
         preparationText = `<p>${r.preparation}</p>`;
       }
 
@@ -291,7 +292,7 @@
           </div>
         </div>
         <div class="back-button">
-          <button class="btn btn-brown" onclick="showRecipes('${categoryName}')">Retour aux recettes</button>
+          <button class="btn btn-brown" onclick="showRecipes('${encodedCategoryName}')">Retour aux recettes</button>
           <button class="btn btn-brown" onclick="showCategories()">Retour aux catégories</button>
         </div>
       `;
