@@ -26,6 +26,13 @@
           "portions": "1 grande pizza (4 portions)",
           "temps_preparation": "15 min",
           "temps_cuisson": "15-20 min",
+          "temps_total": "30-35 min",
+          "niveau_difficulte": "Facile",
+          "methodes_conservations": [
+            "Se conserve 2 jours au réfrigérateur dans un contenant hermétique",
+            "Peut être congelée jusqu'à 1 mois (sans garniture)",
+            "Réchauffer 10 min à 180°C avant de garnir"
+          ],
           "ingredients": [
             "500 ml (2 tasses) de farine sans gluten tout usage",
             "7 g (2 ¼ c. à thé) de levure instantanée",
@@ -50,6 +57,13 @@
           "portions": "6-8 portions",
           "temps_preparation": "30 min",
           "temps_cuisson": "40 min",
+          "temps_total": "70 min",
+          "niveau_difficulte": "Moyen",
+          "methodes_conservations": [
+            "Se conserve 4 jours au réfrigérateur",
+            "Congélation possible pour 2 mois (sans béchamel ou avec béchamel congelée séparément)",
+            "Réchauffer à 180°C pendant 25 min avec un couvercle"
+          ],
           "ingredients": [
             "12 pâtes de lasagne sans gluten",
             "500 ml (2 tasses) de sauce tomate maison",
@@ -79,6 +93,13 @@
           "portions": "6 portions",
           "temps_preparation": "15 min",
           "temps_cuisson": "10 min",
+          "temps_total": "25 min",
+          "niveau_difficulte": "Facile",
+          "methodes_conservations": [
+            "Meilleure consommée fraîche",
+            "Peut se conserver 1 jour au réfrigérateur dans un contenant hermétique",
+            "Ne pas congeler (pâtes deviennent molles)"
+          ],
           "ingredients": [
             "500 ml (2 tasses) de pâtes macaroni sans gluten",
             "375 ml (1 ½ tasse) de pois chiches cuits",
@@ -112,6 +133,13 @@
           "portions": "4 portions",
           "temps_preparation": "10 min",
           "temps_cuisson": "15 min",
+          "temps_total": "25 min",
+          "niveau_difficulte": "Facile",
+          "methodes_conservations": [
+            "Se conserve 3 jours au réfrigérateur",
+            "Peut être réchauffé à l'airfryer 5 min à 180°C",
+            "Congélation possible pour 1 mois (sans chapelure)"
+          ],
           "ingredients": [
             "4 poitrines de poulet (environ 150 g chacune)",
             "125 ml (½ tasse) de farine sans gluten",
@@ -139,6 +167,13 @@
           "portions": "4 portions",
           "temps_preparation": "5 min",
           "temps_cuisson": "10 min",
+          "temps_total": "15 min",
+          "niveau_difficulte": "Très Facile",
+          "methodes_conservations": [
+            "Se consomme idéalement frais",
+            "Peut être conservé 1 jour au réfrigérateur",
+            "Ne pas congeler après cuisson"
+          ],
           "ingredients": [
             "4 filets de saumon (150 g chacun)",
             "30 ml (2 c. à soupe) d'huile d'olive",
@@ -161,6 +196,13 @@
           "portions": "4 portions (12-16 boulettes)",
           "temps_preparation": "15 min",
           "temps_cuisson": "12 min",
+          "temps_total": "27 min",
+          "niveau_difficulte": "Facile",
+          "methodes_conservations": [
+            "Se conserve 3 jours au réfrigérateur",
+            "Congélation possible pour 2 mois (cuites ou crues)",
+            "Réchauffer à l'airfryer 8 min à 180°C"
+          ],
           "ingredients": [
             "450 g (1 lb) de porc haché",
             "60 ml (¼ tasse) de farine de riz",
@@ -185,6 +227,13 @@
           "portions": "4 portions",
           "temps_preparation": "15 min",
           "temps_cuisson": "25 min",
+          "temps_total": "40 min",
+          "niveau_difficulte": "Facile",
+          "methodes_conservations": [
+            "Se conserve 4 jours au réfrigérateur",
+            "Congélation possible pour 1,5 mois",
+            "Réchauffer à 180°C avec un couvercle 20 min"
+          ],
           "ingredients": [
             "4 cuisses de poulet désossées (600 g)",
             "2 courgettes moyennes coupées en rondelles",
@@ -211,6 +260,13 @@
           "portions": "4 portions",
           "temps_preparation": "10 min",
           "temps_cuisson": "15 min",
+          "temps_total": "25 min",
+          "niveau_difficulte": "Facile",
+          "methodes_conservations": [
+            "Se conserve 2 jours au réfrigérateur",
+            "Congélation possible pour 1 mois (sans marinade)",
+            "Réchauffer à 160°C pendant 15 min"
+          ],
           "ingredients": [
             "4 filets de saumon (150 g chacun)",
             "30 ml (2 c. à soupe) de gingembre frais râpé",
@@ -235,6 +291,13 @@
           "portions": "4 portions",
           "temps_preparation": "15 min",
           "temps_cuisson": "20 min",
+          "temps_total": "35 min",
+          "niveau_difficulte": "Facile",
+          "methodes_conservations": [
+            "Se conserve 3 jours au réfrigérateur",
+            "Congélation possible pour 2 mois",
+            "Réchauffer à feu doux avec 2 c. à soupe d'eau"
+          ],
           "ingredients": [
             "450 g (1 lb) de porc coupé en lanières",
             "2 poivrons coupés en lanières",
@@ -262,6 +325,13 @@
           "portions": "4 portions",
           "temps_preparation": "10 min",
           "temps_cuisson": "12 min",
+          "temps_total": "22 min",
+          "niveau_difficulte": "Facile",
+          "methodes_conservations": [
+            "Se consomme idéalement frais",
+            "Peut être conservé 1 jour au réfrigérateur",
+            "Ne pas congeler après cuisson"
+          ],
           "ingredients": [
             "4 filets de poisson blanc (tilapia, sole) 150 g chacun",
             "500 ml (2 tasses) de brocolis en bouquets",
@@ -293,6 +363,13 @@
           "portions": "4 portions",
           "temps_preparation": "15 min",
           "temps_cuisson": "15 min",
+          "temps_total": "30 min",
+          "niveau_difficulte": "Moyen",
+          "methodes_conservations": [
+            "Se conserve 3 jours au réfrigérateur",
+            "Congélation possible pour 1 mois",
+            "Réchauffer à feu doux avec 2 c. à soupe de lait de coco"
+          ],
           "ingredients": [
             "400 g (14 oz) de tofu ferme coupé en cubes",
             "2 courgettes moyennes coupées en demi-lunes",
@@ -322,6 +399,13 @@
           "portions": "4 portions (collation ou accompagnement)",
           "temps_preparation": "5 min",
           "temps_cuisson": "20 min",
+          "temps_total": "25 min",
+          "niveau_difficulte": "Très Facile",
+          "methodes_conservations": [
+            "Se conserve 5 jours dans un contenant hermétique à température ambiante",
+            "Ne pas réfrigérer (perdent leur croustillant)",
+            "Ne pas congeler"
+          ],
           "ingredients": [
             "540 ml (19 oz/1 boîte) de pois chiches égouttés",
             "30 ml (2 c. à soupe) d'huile d'olive",
@@ -354,6 +438,13 @@
           "portions": "8 rouleaux",
           "temps_preparation": "20 min",
           "temps_cuisson": "10 min",
+          "temps_total": "30 min",
+          "niveau_difficulte": "Moyen",
+          "methodes_conservations": [
+            "Se consomment idéalement frais",
+            "Peuvent être conservés 1 jour au réfrigérateur (non cuits)",
+            "Ne pas congeler après cuisson"
+          ],
           "ingredients": [
             "8 feuilles de riz (22 cm de diamètre)",
             "200 g de saumon cuit émietté",
@@ -380,6 +471,13 @@
           "portions": "8 rouleaux",
           "temps_preparation": "20 min",
           "temps_cuisson": "10 min",
+          "temps_total": "30 min",
+          "niveau_difficulte": "Moyen",
+          "methodes_conservations": [
+            "Se consomment idéalement frais",
+            "Peuvent être conservés 1 jour au réfrigérateur (non cuits)",
+            "Ne pas congeler après cuisson"
+          ],
           "ingredients": [
             "8 feuilles de riz (22 cm)",
             "16 crevettes cuites décortiquées",
@@ -406,6 +504,13 @@
           "portions": "8 rouleaux",
           "temps_preparation": "20 min",
           "temps_cuisson": "10 min",
+          "temps_total": "30 min",
+          "niveau_difficulte": "Moyen",
+          "methodes_conservations": [
+            "Se consomment idéalement frais",
+            "Peuvent être conservés 1 jour au réfrigérateur (non cuits)",
+            "Ne pas congeler après cuisson"
+          ],
           "ingredients": [
             "8 feuilles de riz (22 cm)",
             "250 ml (1 tasse) de poulet cuit émincé",
@@ -430,6 +535,13 @@
           "portions": "8 rouleaux",
           "temps_preparation": "20 min",
           "temps_cuisson": "12 min",
+          "temps_total": "32 min",
+          "niveau_difficulte": "Moyen",
+          "methodes_conservations": [
+            "Se consomment idéalement frais",
+            "Peuvent être conservés 1 jour au réfrigérateur (non cuits)",
+            "Ne pas congeler après cuisson"
+          ],
           "ingredients": [
             "8 feuilles de riz (22 cm)",
             "300 g de bœuf haché cuit assaisonné",
@@ -456,6 +568,13 @@
           "portions": "8 rouleaux",
           "temps_preparation": "20 min",
           "temps_cuisson": "8 min",
+          "temps_total": "28 min",
+          "niveau_difficulte": "Moyen",
+          "methodes_conservations": [
+            "Se consomment idéalement frais",
+            "Peuvent être conservés 1 jour au réfrigérateur (non cuits)",
+            "Ne pas congeler après cuisson"
+          ],
           "ingredients": [
             "8 feuilles de riz (22 cm)",
             "200 g de tofu mariné coupé en bâtonnets",
@@ -480,6 +599,13 @@
           "portions": "8 rouleaux dessert",
           "temps_preparation": "15 min",
           "temps_cuisson": "7 min",
+          "temps_total": "22 min",
+          "niveau_difficulte": "Facile",
+          "methodes_conservations": [
+            "Se consomme idéalement frais",
+            "Peut être conservé 1 jour au réfrigérateur",
+            "Ne pas congeler"
+          ],
           "ingredients": [
             "8 feuilles de riz (22 cm)",
             "2 bananes coupées en tranches",
