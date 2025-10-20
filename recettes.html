@@ -1,358 +1,408 @@
+
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr-CA">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recettes - Cuisine Saine Sans Gluten et Sans Lactose</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
-  <style>
-    /* Styles généraux */
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Montserrat', sans-serif; background-color: #F0EDE5; color: #4A4A4A; margin: 0; padding: 0; background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Cpath fill="%236B3A1E" fill-opacity="0.05" d="M11.5 0L0 11.5V100h100V0z"/%3E%3C/svg%3E'); }
-    
-    /* Typographie élégante */
-    h1, h3, h4 { font-family: 'Dancing Script', cursive; color: #6B3A1E; line-height: 1.2; margin: 0; padding: 10px 0; }
-    h2 { font-family: 'Dancing Script', cursive; font-size: 1.6em; line-height: 2.0; letter-spacing: 0.1em; font-style: normal; font-weight: 700; color: #000000; margin: 0; text-transform: uppercase; padding: 15px 0; }
-    
-    /* Navigation et en-tête */
-    .navbar { background-color: #8B4513 !important; padding: 10px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    .navbar-brand, .nav-link { color: #F0EDE5 !important; font-weight: 300; }
-    .nav-link:hover { color: #D4B483 !important; }
-    header { background: linear-gradient(to bottom, #8B4513, #F0EDE5); text-align: center; padding: 30px 0; margin: 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-    
-    /* Contenu principal */
-    main { padding: 20px 0; }
-    .introduction, .conclusion { text-align: center; padding: 20px; font-style: italic; color: #6B3A1E; }
-    
-    /* Cartes de recettes/catégories (Amélioration du look) */
-    .card { 
-      transition: transform 0.3s ease, box-shadow 0.3s ease; 
-      border: none; /* Supprimer la bordure par défaut de Bootstrap */
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    .card:hover { 
-      transform: translateY(-5px); /* Légère élévation */
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* Ombre plus marquée */
-    }
-    .card-img-top { height: 200px; object-fit: cover; }
-    .row { gap: 20px 0; padding: 0 10px; margin: 0; }
-    
-    /* Affichage d'une seule recette */
-    #recipe-content { max-width: 800px; margin: 20px auto; padding: 30px; background-color: rgba(255,255,255,0.95); border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-    
-    /* Boutons bruns élégants */
-    .btn-brown { 
-      background-color: #6B3A1E; 
-      color: #F0EDE5; 
-      border: none; 
-      padding: 10px 20px; 
-      border-radius: 5px; 
-      cursor: pointer; 
-      transition: background-color 0.3s, transform 0.1s; 
-      margin: 10px 5px; 
-    }
-    .btn-brown:hover { 
-      background-color: #8B4513; 
-      color: #FFF; 
-      transform: translateY(-1px);
-    }
-    .back-button { text-align: center; padding: 20px 0; }
-    
-    /* Liste de définition pour les autres infos */
-    #recipe-content dl { margin-bottom: 0; }
-    #recipe-content dt { font-weight: 600; color: #8B4513; }
-    
-    /* Messages d'état */
-    .error-message { background: #ffebee; border: 2px solid #ef5350; padding: 20px; margin: 20px auto; border-radius: 10px; text-align: center; color: #c62828; max-width: 600px; }
-    .loading { text-align: center; padding: 40px; font-size: 1.2em; color: #6B3A1E; }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recettes Sans Gluten et Sans Lactose — Cuisine Saine au Québec</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Couleurs principales */
+    :root {
+      --primary-brown: #6B3A1E;
+      --secondary-brown: #8B4513;
+      --light-beige: #F8F5F0;
+      --text-dark: #333333;
+      --text-light: #F0EDE5;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--light-beige);
+      color: var(--text-dark);
+      line-height: 1.6;
+      padding-top: 70px; /* Pour ne pas cacher le contenu sous la navbar fixe */
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: var(--secondary-brown) !important;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .navbar-brand,
+    .nav-link {
+      color: var(--text-light) !important;
+      font-weight: 500;
+      font-size: 1.05rem;
+    }
+    .nav-link:hover {
+      color: #E8D9C0 !important;
+      text-decoration: underline;
+    }
+
+    /* En-tête */
+    header {
+      background: linear-gradient(to bottom, var(--secondary-brown), var(--light-beige));
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 70px;
+      border-bottom: 1px solid #e0d8c8;
+    }
+    header h1 {
+      font-size: 2.2rem;
+      color: var(--text-light);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #E8D9C0;
+      margin: 0;
+      font-weight: 400;
+    }
+
+    /* Sections intro/conclusion */
+    .introduction,
+    .conclusion {
+      text-align: center;
+      padding: 25px 15px;
+      font-size: 1.1rem;
+      color: var(--primary-brown);
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+
+    /* Cartes catégories/recettes */
+    .card {
+      border-radius: 12px;
+      border: 1px solid #e0d8c8;
+      transition: transform 0.25s, box-shadow 0.25s;
+      height: 100%;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+    .card-img-top {
+      height: 180px;
+      object-fit: cover;
+    }
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--primary-brown);
+    }
+    .card-body {
+      padding: 18px;
+    }
+
+    /* Contenu d’une recette */
+    #recipe-content {
+      background-color: white;
+      border-radius: 16px;
+      padding: 25px;
+      margin: 20px auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      max-width: 900px;
+    }
+    #recipe-content h2 {
+      color: var(--primary-brown);
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+    #recipe-content h3 {
+      color: var(--secondary-brown);
+      font-size: 1.4rem;
+      margin-top: 25px;
+      margin-bottom: 12px;
+    }
+    #recipe-content ul, #recipe-content ol {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    #recipe-content li {
+      margin-bottom: 8px;
+    }
+
+    /* Boutons */
+    .btn-brown {
+      background-color: var(--primary-brown);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: background-color 0.2s, transform 0.15s;
+      margin: 8px 6px;
+    }
+    .btn-brown:hover {
+      background-color: var(--secondary-brown);
+      transform: translateY(-2px);
+      color: white;
+    }
+
+    /* Messages */
+    .loading, .error-message {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 40px auto;
+    }
+    .error-message {
+      background-color: #ffebee;
+      border: 2px solid #ef9a9a;
+      color: #c62828;
+      border-radius: 12px;
+    }
+
+    /* Responsive amélioré */
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.8rem; }
+      header p { font-size: 1.1rem; }
+      .introduction, .conclusion { font-size: 1rem; padding: 20px 10px; }
+      .btn-brown { width: 100%; margin: 8px 0; }
+      #recipe-content { padding: 20px 15px; }
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      background-color: var(--secondary-brown);
+      color: var(--text-light);
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">Cuisine Saine Sans Gluten et Sans Lactose</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
-          <li class="nav-item"><a class="nav-link" href="recettes.html">Recettes</a></li>
-          <li class="nav-item"><a class="nav-link" href="fodmap.html">Méthode FODMAP</a></li>
-          <li class="nav-item"><a class="nav-link" href="achats.html">Achats</a></li>
-          <li class="nav-item"><a class="nav-link" href="questions.html">Questions/Commentaires</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">Cuisine Saine Québec</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="recettes.html">Recettes</a></li>
+          <li class="nav-item"><a class="nav-link" href="fodmap.html">Méthode FODMAP</a></li>
+          <li class="nav-item"><a class="nav-link" href="achats.html">Conseils d’achat</a></li>
+          <li class="nav-item"><a class="nav-link" href="questions.html">Questions</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  <header>
-    <h1>Nos Recettes</h1>
-    <p>Sans gluten, sans lactose & sans viande rouge</p>
-  </header>
+  <!-- En-tête principal -->
+  <header>
+    <h1>Recettes Sans Gluten & Sans Lactose</h1>
+    <p>Simple, sain et délicieux — pour toute la famille québécoise</p>
+  </header>
 
-  <main class="container-fluid">
-    <section class="introduction">
-      <p>Une collection simple de recettes riches en nutriments, faciles à préparer et adaptées aux repas quotidiens pour allier plaisir, gourmandise et santé.</p>
-    </section>
+  <main class="container">
+    <section class="introduction">
+      <p>Découvrez des recettes faciles à préparer, sans gluten ni lactose, conçues pour votre bien-être quotidien. Parfaites même si vous débutez en cuisine !</p>
+    </section>
 
-        <div id="loading" class="loading">Chargement des recettes...</div>
+    <!-- Éléments dynamiques -->
+    <div id="loading" class="loading">Chargement des recettes…</div>
 
-        <div id="error-message" class="error-message" style="display: none;">
-      <h3>⚠️ Erreur de chargement</h3>
-      <p id="error-text">Impossible de charger le fichier de recettes. Veuillez vérifier son nom **(recettes.json)** et sa structure (doit contenir une clé `recipes` ou `themes`).</p>
-    </div>
+    <div id="error-message" class="error-message" style="display: none;">
+      <h3>⚠️ Impossible de charger les recettes</h3>
+      <p>Veuillez vérifier que le fichier <strong>recettes.json</strong> est bien présent dans le même dossier.</p>
+    </div>
 
-        <section id="categories-container" class="row row-cols-1 row-cols-md-2 g-4"></section>
+    <section id="categories-container" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5"></section>
 
-        <section id="recipes-container" style="display: none;"></section>
+    <section id="recipes-container" style="display: none;"></section>
 
-        <section id="recipe-content" style="display: none;"></section>
+    <section id="recipe-content" style="display: none;"></section>
 
-    <section class="conclusion">
-      <p>Ces recettes démontrent qu'une cuisine saine peut être élégante et gourmande. Régalez-vous !</p>
-    </section>
-  </main>
+    <section class="conclusion">
+      <p>Cuisiner sainement, c’est possible — et c’est même un plaisir ! Bon appétit du Québec 🇨🇦</p>
+    </section>
+  </main>
 
-  <footer style="text-align: center; padding: 20px; background-color: #8B4513; color: #F0EDE5;">
-    <p>&copy; 2023. Avec amour pour votre bien-être.</p>
-  </footer>
+  <footer>
+    <p>&copy; 2023 Cuisine Saine Québec — Des recettes pensées avec cœur pour votre santé.</p>
+  </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // Variables globales
-    let groupedRecipes = {};
-    let categoryKeys = [];
-    
-    const catContainer = document.getElementById('categories-container');
-    const recContainer = document.getElementById('recipes-container');
-    const recipeDiv = document.getElementById('recipe-content');
-    const RECIPE_FILE = 'recettes.json'; // NOM DE FICHIER UTILISÉ
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Identiques à votre logique, mais avec des ajustements mineurs pour la clarté
+    let groupedRecipes = {};
+    let categoryKeys = [];
 
-    // Fonction principale de regroupement et de normalisation des données
-    function processData(data) {
-      let recipes = [];
+    const catContainer = document.getElementById('categories-container');
+    const recContainer = document.getElementById('recipes-container');
+    const recipeDiv = document.getElementById('recipe-content');
+    const RECIPE_FILE = 'recettes.json';
 
-      if (data.themes) {
-        // Structure avec 'themes' (celle que vous avez fournie)
-        data.themes.forEach(themeObj => {
-          themeObj.recettes.forEach(recipe => {
-            // Création d'un objet recette normalisé, conservant les autres champs
-            const normalizedRecipe = {
-              category: themeObj.theme,
-              title: recipe.titre,
-              ingredients: recipe.ingredients,
-              preparation: recipe.preparation
-            };
-            // Ajout des champs supplémentaires (s'ils existent)
-            Object.keys(recipe).forEach(key => {
-              if (!['titre', 'ingredients', 'preparation'].includes(key)) {
-                normalizedRecipe[key] = recipe[key];
-              }
-            });
-            recipes.push(normalizedRecipe);
-          });
-        });
-      } else if (data.recipes) {
-        // Structure plate avec 'recipes'
-        recipes = data.recipes.map(r => ({
-          // Assumer que les clés sont déjà en anglais/normalisées ou qu'on utilise la structure originale
-          ...r,
-          title: r.title || r.titre, // S'assurer que 'title' est présent
-        }));
-      } else {
-        throw new Error("Structure JSON invalide. Manque les clés 'recipes' ou 'themes'.");
-      }
+    function processData(data) {
+      let recipes = [];
 
-      // Regrouper les recettes par catégorie
-      groupedRecipes = recipes.reduce((acc, recipe) => {
-        const category = recipe.category;
-        if (!acc[category]) {
-          acc[category] = [];
-        }
-        acc[category].push(recipe);
-        return acc;
-      }, {});
+      if (data.themes) {
+        data.themes.forEach(themeObj => {
+          themeObj.recettes.forEach(recipe => {
+            const normalizedRecipe = {
+              category: themeObj.theme,
+              title: recipe.titre,
+              ingredients: recipe.ingredients,
+              preparation: recipe.preparation
+            };
+            Object.keys(recipe).forEach(key => {
+              if (!['titre', 'ingredients', 'preparation'].includes(key)) {
+                normalizedRecipe[key] = recipe[key];
+              }
+            });
+            recipes.push(normalizedRecipe);
+          });
+        });
+      } else if (data.recipes) {
+        recipes = data.recipes.map(r => ({ ...r, title: r.title || r.titre }));
+      } else {
+        throw new Error("Structure JSON invalide.");
+      }
 
-      categoryKeys = Object.keys(groupedRecipes).sort((a, b) => a.localeCompare(b, 'fr'));
-      
-      if (categoryKeys.length === 0) {
-        throw new Error("Aucune recette trouvée après le traitement des données.");
-      }
-      
-      showCategories();
-    }
+      groupedRecipes = recipes.reduce((acc, recipe) => {
+        const cat = recipe.category;
+        if (!acc[cat]) acc[cat] = [];
+        acc[cat].push(recipe);
+        return acc;
+      }, {});
 
+      categoryKeys = Object.keys(groupedRecipes).sort((a, b) => a.localeCompare(b, 'fr-CA'));
+      if (categoryKeys.length === 0) throw new Error("Aucune recette trouvée.");
+      showCategories();
+    }
 
-    // Charger le fichier JSON au chargement de la page
-    document.addEventListener("DOMContentLoaded", () => {
-      fetch(RECIPE_FILE)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`Erreur de réseau ou fichier ${RECIPE_FILE} introuvable (Code: ${response.status}).`);
-          }
-          return response.json();
-        })
-        .then(data => {
-          document.getElementById('loading').style.display = 'none';
-          processData(data);
-        })
-        .catch(error => {
-          console.error('Erreur de chargement ou de traitement:', error);
-          document.getElementById('loading').style.display = 'none';
-          document.getElementById('error-message').style.display = 'block';
-          document.getElementById('error-text').textContent = `Erreur: ${error.message}`;
-        });
-    });
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch(RECIPE_FILE)
+        .then(response => {
+          if (!response.ok) throw new Error(`Fichier introuvable (${response.status})`);
+          return response.json();
+        })
+        .then(data => {
+          document.getElementById('loading').style.display = 'none';
+          processData(data);
+        })
+        .catch(error => {
+          console.error('Erreur:', error);
+          document.getElementById('loading').style.display = 'none';
+          document.getElementById('error-message').style.display = 'block';
+        });
+    });
 
-    // Afficher catégories (Niveau 1)
-    function showCategories() {
-      catContainer.style.display = "flex";
-      recContainer.style.display = "none";
-      recipeDiv.style.display = "none";
-      catContainer.innerHTML = "";
-      
-      categoryKeys.forEach((categoryName, index) => {
-        const recipeCount = groupedRecipes[categoryName].length;
-        const safeCategoryName = encodeURIComponent(categoryName); 
+    function showCategories() {
+      catContainer.style.display = "flex";
+      recContainer.style.display = "none";
+      recipeDiv.style.display = "none";
+      catContainer.innerHTML = "";
 
-        let imageUrl = `https://via.placeholder.com/400x200?text=${encodeURIComponent(categoryName)}`;
-        
-        if (categoryName.includes("Desserts")) {
-          imageUrl = "dessertsalle.png"; 
-        } else if (categoryName.includes("Soupes")) {
-          imageUrl = "soupe.png"; 
-        }
+      categoryKeys.forEach(cat => {
+        const count = groupedRecipes[cat].length;
+        const safeCat = encodeURIComponent(cat);
+        const img = cat.toLowerCase().includes('dessert') ? 'dessertsalle.png' : 
+                    cat.toLowerCase().includes('soupe') ? 'soupe.png' : 
+                    'https://via.placeholder.com/400x200/e0d8c8/6B3A1E?text=' + encodeURIComponent(cat);
 
-        catContainer.innerHTML += `
-          <div class="col">
-            <div class="card h-100 shadow-sm">
-              <img src="${imageUrl}" class="card-img-top" alt="Image pour ${categoryName}">
-              <div class="card-body text-center">
-                <h5 class="card-title">${categoryName}</h5>
-                <p class="text-muted">${recipeCount} recette${recipeCount > 1 ? 's' : ''}</p>
-                <button class="btn btn-brown" onclick="showRecipes('${safeCategoryName}')">Voir les recettes</button>
-              </div>
-            </div>
-          </div>`;
-      });
-    }
+        catContainer.innerHTML += `
+          <div class="col">
+            <div class="card h-100">
+              <img src="${img}" class="card-img-top" alt="${cat}">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">${cat}</h5>
+                <p class="text-muted mb-3">${count} recette${count > 1 ? 's' : ''}</p>
+                <button class="btn btn-brown mt-auto" onclick="showRecipes('${safeCat}')">
+                  Voir les recettes
+                </button>
+              </div>
+            </div>
+          </div>`;
+      });
+    }
 
-    // Afficher recettes d'un thème (Niveau 2)
-    function showRecipes(encodedCategoryName) {
-      const categoryName = decodeURIComponent(encodedCategoryName);
-      const recipes = groupedRecipes[categoryName];
+    function showRecipes(encodedCat) {
+      const cat = decodeURIComponent(encodedCat);
+      const recipes = groupedRecipes[cat];
 
-      catContainer.style.display = "none";
-      recipeDiv.style.display = "none";
-      recContainer.style.display = "block";
-      recContainer.innerHTML = `<h3 class="mt-3 text-center">${categoryName}</h3><div class="row row-cols-1 row-cols-md-2 g-4">`;
-      
-      recipes.forEach((r, i) => {
-        recContainer.innerHTML += `
-          <div class="col">
-            <div class="card h-100 shadow-sm">
-              <img src="https://via.placeholder.com/300x160?text=${encodeURIComponent(r.title)}" alt="${r.title}" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">${r.title}</h5>
-                <button class="btn btn-brown" onclick="showRecipe('${encodedCategoryName}', ${i})">Voir les détails</button>
-              </div>
-            </div>
-          </div>`;
-      });
-      
-      recContainer.innerHTML += `</div><div class="back-button"><button class="btn btn-brown" onclick="showCategories()">Retour aux catégories</button></div>`;
-    }
+      catContainer.style.display = "none";
+      recipeDiv.style.display = "none";
+      recContainer.style.display = "block";
+      recContainer.innerHTML = `<h2 class="text-center mb-4">${cat}</h2><div class="row row-cols-1 row-cols-md-2 g-4">`;
 
-    // Afficher détail recette (Niveau 3)
-    function showRecipe(encodedCategoryName, recipeIndex) {
-      const categoryName = decodeURIComponent(encodedCategoryName);
-      const recipes = groupedRecipes[categoryName];
-      const r = recipes[recipeIndex];
-      
-      recContainer.style.display = "none";
-      recipeDiv.style.display = "block";
-      
-      // --- 1. Titre et Catégorie (déjà affichés) ---
-      let contentHTML = `
-        <div class="card p-4">
-          <div class="card-body">
-            <h3>${r.title}</h3>
-            <p class="text-muted"><strong>Catégorie:</strong> ${categoryName}</p>
-      `;
+      recipes.forEach((r, i) => {
+        recContainer.innerHTML += `
+          <div class="col">
+            <div class="card h-100">
+              <img src="https://via.placeholder.com/300x160/e0d8c8/6B3A1E?text=${encodeURIComponent(r.title)}" 
+                   alt="${r.title}" class="card-img-top">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">${r.title}</h5>
+                <button class="btn btn-brown mt-auto" onclick="showRecipe('${encodedCat}', ${i})">
+                  Voir la recette
+                </button>
+              </div>
+            </div>
+          </div>`;
+      });
 
-      // --- 2. Ingrédients (Array ou String) ---
-      if (r.ingredients) {
-        contentHTML += '<h4>Ingrédients</h4>';
-        if (Array.isArray(r.ingredients)) {
-          contentHTML += `<ul>${r.ingredients.map(ing => `<li>${ing}</li>`).join('')}</ul>`;
-        } else {
-          contentHTML += `<p>${r.ingredients}</p>`;
-        }
-      }
+      recContainer.innerHTML += `</div><div class="text-center mt-4">
+        <button class="btn btn-brown" onclick="showCategories()">← Retour aux catégories</button>
+      </div>`;
+    }
 
-      // --- 3. Préparation (Array ou String) ---
-      if (r.preparation) {
-        contentHTML += '<h4>Préparation</h4>';
-        if (Array.isArray(r.preparation)) {
-          // Utilisation d'une liste ordonnée pour les étapes (plus lisible)
-          contentHTML += `<ol>${r.preparation.map(step => `<li>${step}</li>`).join('')}</ol>`;
-        } else {
-          contentHTML += `<p>${r.preparation}</p>`;
-        }
-      }
+    function showRecipe(encodedCat, index) {
+      const cat = decodeURIComponent(encodedCat);
+      const r = groupedRecipes[cat][index];
 
-      // --- 4. Autres informations (champs JSON supplémentaires) ---
-      let extraFieldsHTML = '';
-      // Clés déjà traitées/normalisées (pour exclusion)
-      const excludedKeys = ['category', 'title', 'ingredients', 'preparation', 'titre', 'theme'];
-      const allKeys = Object.keys(r);
-      const extraKeys = allKeys.filter(key => !excludedKeys.includes(key));
+      recContainer.style.display = "none";
+      recipeDiv.style.display = "block";
 
-      if (extraKeys.length > 0) {
-        extraFieldsHTML += '<h4>Autres informations (détails supplémentaires)</h4><dl class="row">';
-        extraKeys.forEach(key => {
-          const value = r[key];
-          // Formatage de la clé pour l'affichage (ex: "temps_cuisson" -> "Temps cuisson")
-          const formattedKey = key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ');
-          
-          if (value !== null && value !== undefined && value !== '') {
-            let formattedValue;
-            if (Array.isArray(value)) {
-              // Si c'est un tableau, l'afficher comme une liste
-              formattedValue = `<ul>${value.map(item => `<li>${item}</li>`).join('')}</ul>`;
-            } else if (typeof value === 'object' && value !== null) {
-              // Si c'est un objet (non-tableau), l'afficher comme JSON
-              formattedValue = `<pre>${JSON.stringify(value, null, 2)}</pre>`;
-            } else {
-              // Valeur simple
-              formattedValue = String(value);
-            }
+      let html = `<h2>${r.title}</h2><p class="text-muted"><strong>Catégorie :</strong> ${cat}</p>`;
 
-            extraFieldsHTML += `
-              <div>
-                <dt class="col-sm-3">${formattedKey}:</dt>
-                <dd class="col-sm-9">${formattedValue}</dd>
-              </div>
-            `;
-          }
-        });
-        extraFieldsHTML += '</dl>';
-      }
-      
-      // Finalisation du contenu
-      contentHTML += extraFieldsHTML + `
-          </div>         </div>         <div class="back-button">
-          <button class="btn btn-brown" onclick="showRecipes('${encodedCategoryName}')">Retour aux recettes</button>
-          <button class="btn btn-brown" onclick="showCategories()">Retour aux catégories</button>
-        </div>
-      `;
+      if (r.ingredients) {
+        html += `<h3>Ingrédients</h3><ul>${(Array.isArray(r.ingredients) ? r.ingredients : [r.ingredients]).map(i => `<li>${i}</li>`).join('')}</ul>`;
+      }
 
-      recipeDiv.innerHTML = contentHTML;
-    }
-  </script>
+      if (r.preparation) {
+        html += `<h3>Étapes de préparation</h3><ol>${(Array.isArray(r.preparation) ? r.preparation : [r.preparation]).map(step => `<li>${step}</li>`).join('')}</ol>`;
+      }
+
+      // Autres infos
+      const excluded = ['category', 'title', 'ingredients', 'preparation', 'titre'];
+      const extra = Object.keys(r).filter(k => !excluded.includes(k) && r[k] != null && r[k] !== '');
+
+      if (extra.length > 0) {
+        html += `<h3>Détails pratiques</h3><dl>`;
+        extra.forEach(key => {
+          const label = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+          const value = Array.isArray(r[key]) ? r[key].join(', ') : String(r[key]);
+          html += `<dt class="fw-bold mt-2">${label} :</dt><dd>${value}</dd>`;
+        });
+        html += `</dl>`;
+      }
+
+      html += `
+        <div class="text-center mt-4">
+          <button class="btn btn-brown" onclick="showRecipes('${encodedCat}')">
+            ← Retour aux recettes
+          </button>
+          <button class="btn btn-brown" onclick="showCategories()">
+            ← Retour aux catégories
+          </button>
+        </div>`;
+
+      recipeDiv.innerHTML = html;
+    }
+  </script>
 </body>
 </html>
