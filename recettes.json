@@ -1,118 +1,520 @@
 {
   "titre_ebook": "Recettes Gourmandes Sans Gluten et Sans Lactose",
-  "auteur": "Mam’zelle Romane",
-  "description": "Une collection de 44 recettes simples, savoureuses et bien-être, toutes sans gluten et sans lactose, organisées par thèmes : du quotidien aux fêtes, en passant par les repas sains et créatifs.",
+  "auteur": "Mam'zelle Romane",
+  "description": "Une collection de 50 recettes simples, savoureuses et bien-être, toutes sans gluten et sans lactose, avec des instructions claires et des mesures précises.",
   "table_des_matieres": [
-    "Recettes de Base",
-    "Recettes Airfryer",
-    "Recettes Desserts",
-    "Recettes Noël",
-    "Recettes Salades Hivernales et Hors-d'œuvre",
+    "Recettes de Base Essentielles",
+    "Plats Principaux - Viandes et Poissons",
+    "Plats Principaux - Végétariens et Vegan",
     "Recettes Feuilles de Riz",
-    "Recettes Poké Bowls",
-    "Recettes Soupes Consistantes",
-    "Recettes Anti-inflammatoires",
+    "Recettes Airfryer",
+    "Poké Bowls - Tous les styles",
+    "Soupes et Potages Consistants",
+    "Salades et Hors-d'œuvre",
+    "Recettes de Fêtes et Noël",
+    "Desserts et Douceurs",
+    "Recettes Anti-inflammatoires et Bien-être",
     "Index des Ingrédients"
   ],
   "themes": [
     {
-      "theme": "Recettes de Base",
+      "theme": "Recettes de Base Essentielles",
+      "description": "Les fondamentaux à maîtriser pour cuisiner sans gluten et sans lactose",
       "recettes": [
-        {"titre": "Lasagne Sans Gluten Sans Lactose","ingredients": ["Pâtes de lasagne sans gluten","Sauce tomate maison","Lait végétal","Fécule de maïs","Viande hachée ou lentilles","Épices"],"preparation": "Alterner couches de pâtes, sauce tomate, béchamel végétale et garniture. Cuire au four 35-40 min à 180°C."},
-        {"titre": "Croûte de Pizza Sans Gluten et Sans Lactose","ingredients": ["Farine sans gluten","Levure","Eau tiède","Huile d’olive","Sel"],"preparation": "Mélanger les ingrédients, former une pâte, étaler, cuire légèrement avant de garnir et remettre au four."},
-        {"titre": "Salade de Macaroni Sans Gluten Sans Lactose avec Légumineuses","ingredients": ["Pâtes sans gluten","Pois chiches","Légumes croquants","Vinaigrette légère"],"preparation": "Cuire les pâtes, mélanger avec pois chiches et légumes, assaisonner avec vinaigrette."}
+        {
+          "titre": "Croûte de Pizza Sans Gluten et Sans Lactose",
+          "portions": "1 grande pizza (4 portions)",
+          "temps_preparation": "15 min",
+          "temps_cuisson": "15-20 min",
+          "ingredients": [
+            "500 ml (2 tasses) de farine sans gluten tout usage",
+            "7 g (2 ¼ c. à thé) de levure instantanée",
+            "310 ml (1 ¼ tasse) d'eau tiède",
+            "45 ml (3 c. à soupe) d'huile d'olive",
+            "5 ml (1 c. à thé) de sel",
+            "5 ml (1 c. à thé) de sucre"
+          ],
+          "preparation": [
+            "1. Dans un grand bol, mélangez la farine, la levure, le sel et le sucre.",
+            "2. Ajoutez l'eau tiède et l'huile d'olive.",
+            "3. Mélangez jusqu'à obtenir une pâte homogène.",
+            "4. Laissez reposer 10 minutes.",
+            "5. Étalez la pâte sur une plaque huilée.",
+            "6. Précuisez 8 minutes à 200°C (400°F).",
+            "7. Garnissez selon vos goûts.",
+            "8. Remettez au four 10-12 minutes jusqu'à ce que la garniture soit dorée."
+          ]
+        },
+        {
+          "titre": "Lasagne Sans Gluten Sans Lactose",
+          "portions": "6-8 portions",
+          "temps_preparation": "30 min",
+          "temps_cuisson": "40 min",
+          "ingredients": [
+            "12 pâtes de lasagne sans gluten",
+            "500 ml (2 tasses) de sauce tomate maison",
+            "500 ml (2 tasses) de lait végétal (soya, amande)",
+            "45 ml (3 c. à soupe) de fécule de maïs",
+            "450 g (1 lb) de viande hachée OU 375 ml (1 ½ tasse) de lentilles cuites",
+            "5 ml (1 c. à thé) d'ail en poudre",
+            "5 ml (1 c. à thé) d'origan séché",
+            "2 ml (½ c. à thé) de sel",
+            "30 ml (2 c. à soupe) d'huile d'olive"
+          ],
+          "preparation": [
+            "1. Préchauffez le four à 180°C (350°F).",
+            "2. Faites cuire la viande ou réchauffez les lentilles avec les épices.",
+            "3. Pour la béchamel : mélangez le lait végétal et la fécule dans une casserole.",
+            "4. Chauffez à feu moyen en remuant jusqu'à épaississement (5 minutes).",
+            "5. Dans un plat allant au four, alternez les couches : sauce tomate, pâtes, viande/lentilles, béchamel.",
+            "6. Répétez 3-4 fois en terminant par la béchamel.",
+            "7. Couvrez de papier aluminium.",
+            "8. Cuisez 35-40 minutes.",
+            "9. Retirez le papier et cuisez 5 minutes de plus pour dorer.",
+            "10. Laissez reposer 10 minutes avant de servir."
+          ]
+        },
+        {
+          "titre": "Salade de Macaroni Sans Gluten avec Légumineuses",
+          "portions": "6 portions",
+          "temps_preparation": "15 min",
+          "temps_cuisson": "10 min",
+          "ingredients": [
+            "500 ml (2 tasses) de pâtes macaroni sans gluten",
+            "375 ml (1 ½ tasse) de pois chiches cuits",
+            "250 ml (1 tasse) de poivrons coupés en dés",
+            "125 ml (½ tasse) de concombre coupé en dés",
+            "125 ml (½ tasse) d'oignon rouge haché",
+            "60 ml (¼ tasse) d'huile d'olive",
+            "30 ml (2 c. à soupe) de vinaigre de cidre",
+            "15 ml (1 c. à soupe) de moutarde de Dijon",
+            "5 ml (1 c. à thé) de sel",
+            "2 ml (½ c. à thé) de poivre"
+          ],
+          "preparation": [
+            "1. Cuisez les pâtes selon les instructions de l'emballage.",
+            "2. Égouttez et rincez à l'eau froide.",
+            "3. Dans un grand bol, mélangez les pâtes, pois chiches et légumes.",
+            "4. Dans un petit bol, fouettez l'huile, le vinaigre, la moutarde, le sel et le poivre.",
+            "5. Versez la vinaigrette sur la salade.",
+            "6. Mélangez bien.",
+            "7. Réfrigérez au moins 1 heure avant de servir."
+          ]
+        }
       ]
     },
     {
-      "theme": "Recettes Airfryer",
+      "theme": "Plats Principaux - Viandes et Poissons",
+      "description": "Recettes protéinées savoureuses pour vos repas quotidiens",
       "recettes": [
-        {"titre": "Saumon au Airfryer","ingredients": ["Filets de saumon","Citron","Herbes"],"preparation": "Assaisonner le saumon, cuire au Airfryer 10 min à 180°C."},
-        {"titre": "Poulet croustillant au Airfryer","ingredients": ["Poitrines de poulet","Farine sans gluten","Épices"],"preparation": "Enrober le poulet, cuire 15 min à 190°C dans le Airfryer."},
-        {"titre": "Pois chiches assaisonnés","ingredients": ["Pois chiches cuits","Épices","Huile d’olive"],"preparation": "Mélanger et cuire au Airfryer 15 min à 180°C."},
-        {"titre": "Gâteau sans gluten sans lactose au Airfryer","ingredients": ["Farine sans gluten","Lait végétal","Sucre de coco","Poudre à lever"],"preparation": "Préparer la pâte et cuire dans un moule adapté au Airfryer 20-25 min à 160°C."},
-        {"titre": "Boulettes de porc sans gluten sans lactose","ingredients": ["Porc haché","Ail","Oignon","Farine de riz"],"preparation": "Former des boulettes et cuire au Airfryer 12 min à 190°C."}
+        {
+          "titre": "Poulet Croustillant au Airfryer",
+          "portions": "4 portions",
+          "temps_preparation": "10 min",
+          "temps_cuisson": "15 min",
+          "ingredients": [
+            "4 poitrines de poulet (environ 150 g chacune)",
+            "125 ml (½ tasse) de farine sans gluten",
+            "125 ml (½ tasse) de chapelure sans gluten",
+            "5 ml (1 c. à thé) de paprika",
+            "5 ml (1 c. à thé) d'ail en poudre",
+            "2 ml (½ c. à thé) de sel",
+            "2 ml (½ c. à thé) de poivre",
+            "Spray d'huile d'olive"
+          ],
+          "preparation": [
+            "1. Dans un bol, mélangez la farine et les épices.",
+            "2. Dans un autre bol, placez la chapelure.",
+            "3. Enrobez chaque poitrine de farine épicée.",
+            "4. Roulez ensuite dans la chapelure.",
+            "5. Vaporisez légèrement d'huile.",
+            "6. Placez dans le panier du Airfryer.",
+            "7. Cuisez 15 minutes à 190°C (375°F).",
+            "8. Retournez à mi-cuisson.",
+            "9. Vérifiez que la température interne atteint 75°C (165°F)."
+          ]
+        },
+        {
+          "titre": "Saumon au Airfryer",
+          "portions": "4 portions",
+          "temps_preparation": "5 min",
+          "temps_cuisson": "10 min",
+          "ingredients": [
+            "4 filets de saumon (150 g chacun)",
+            "30 ml (2 c. à soupe) d'huile d'olive",
+            "Le jus d'1 citron",
+            "5 ml (1 c. à thé) d'herbes de Provence",
+            "2 ml (½ c. à thé) de sel",
+            "1 ml (¼ c. à thé) de poivre"
+          ],
+          "preparation": [
+            "1. Badigeonnez les filets d'huile d'olive.",
+            "2. Arrosez de jus de citron.",
+            "3. Saupoudrez d'herbes, sel et poivre.",
+            "4. Placez dans le Airfryer.",
+            "5. Cuisez 10 minutes à 180°C (350°F).",
+            "6. Le saumon doit être rose au centre et se défaire facilement."
+          ]
+        },
+        {
+          "titre": "Boulettes de Porc Sans Gluten",
+          "portions": "4 portions (12-16 boulettes)",
+          "temps_preparation": "15 min",
+          "temps_cuisson": "12 min",
+          "ingredients": [
+            "450 g (1 lb) de porc haché",
+            "60 ml (¼ tasse) de farine de riz",
+            "1 œuf",
+            "15 ml (1 c. à soupe) d'ail haché",
+            "60 ml (¼ tasse) d'oignon haché finement",
+            "5 ml (1 c. à thé) de paprika fumé",
+            "2 ml (½ c. à thé) de sel",
+            "1 ml (¼ c. à thé) de poivre"
+          ],
+          "preparation": [
+            "1. Dans un grand bol, mélangez tous les ingrédients.",
+            "2. Formez des boulettes de 3-4 cm de diamètre.",
+            "3. Placez-les dans le panier du Airfryer sans qu'elles se touchent.",
+            "4. Cuisez 12 minutes à 190°C (375°F).",
+            "5. Retournez à mi-cuisson.",
+            "6. Vérifiez que la température interne atteint 71°C (160°F)."
+          ]
+        },
+        {
+          "titre": "Poulet Curcuma et Légumes",
+          "portions": "4 portions",
+          "temps_preparation": "15 min",
+          "temps_cuisson": "25 min",
+          "ingredients": [
+            "4 cuisses de poulet désossées (600 g)",
+            "2 courgettes moyennes coupées en rondelles",
+            "3 carottes coupées en bâtonnets",
+            "10 ml (2 c. à thé) de curcuma moulu",
+            "5 ml (1 c. à thé) de gingembre moulu",
+            "30 ml (2 c. à soupe) d'huile d'olive",
+            "5 ml (1 c. à thé) de sel",
+            "2 ml (½ c. à thé) de poivre noir"
+          ],
+          "preparation": [
+            "1. Préchauffez le four à 200°C (400°F).",
+            "2. Dans un grand plat, mélangez le curcuma, gingembre, sel, poivre et huile.",
+            "3. Ajoutez le poulet et les légumes.",
+            "4. Enrobez bien tous les morceaux.",
+            "5. Disposez en une seule couche.",
+            "6. Cuisez 25-30 minutes.",
+            "7. Retournez le poulet à mi-cuisson.",
+            "8. Le poulet doit être doré et les légumes tendres."
+          ]
+        },
+        {
+          "titre": "Saumon au Gingembre Citron",
+          "portions": "4 portions",
+          "temps_preparation": "10 min",
+          "temps_cuisson": "15 min",
+          "ingredients": [
+            "4 filets de saumon (150 g chacun)",
+            "30 ml (2 c. à soupe) de gingembre frais râpé",
+            "Le jus et le zeste d'1 citron",
+            "30 ml (2 c. à soupe) d'huile d'olive",
+            "15 ml (1 c. à soupe) de sauce soja sans gluten",
+            "10 ml (2 c. à thé) de miel",
+            "2 gousses d'ail hachées"
+          ],
+          "preparation": [
+            "1. Préchauffez le four à 190°C (375°F).",
+            "2. Dans un bol, mélangez le gingembre, jus et zeste de citron, huile, sauce soja, miel et ail.",
+            "3. Placez les filets de saumon dans un plat allant au four.",
+            "4. Versez la marinade sur le poisson.",
+            "5. Laissez mariner 10 minutes.",
+            "6. Cuisez 12-15 minutes.",
+            "7. Le saumon doit être opaque et se défaire facilement."
+          ]
+        },
+        {
+          "titre": "Porc aux Légumes et Curcuma",
+          "portions": "4 portions",
+          "temps_preparation": "15 min",
+          "temps_cuisson": "20 min",
+          "ingredients": [
+            "450 g (1 lb) de porc coupé en lanières",
+            "2 poivrons coupés en lanières",
+            "1 oignon moyen émincé",
+            "10 ml (2 c. à thé) de curcuma moulu",
+            "30 ml (2 c. à soupe) d'huile d'olive",
+            "15 ml (1 c. à soupe) de sauce soja sans gluten",
+            "5 ml (1 c. à thé) d'ail en poudre",
+            "2 ml (½ c. à thé) de sel"
+          ],
+          "preparation": [
+            "1. Chauffez l'huile dans une grande poêle à feu moyen-élevé.",
+            "2. Ajoutez le porc et faites dorer 5-7 minutes.",
+            "3. Retirez le porc et réservez.",
+            "4. Dans la même poêle, faites sauter l'oignon 3 minutes.",
+            "5. Ajoutez les poivrons et cuisez 5 minutes.",
+            "6. Remettez le porc dans la poêle.",
+            "7. Ajoutez le curcuma, l'ail, la sauce soja et le sel.",
+            "8. Mélangez bien et cuisez 5 minutes de plus.",
+            "9. Servez chaud."
+          ]
+        },
+        {
+          "titre": "Poisson Vapeur au Curcuma",
+          "portions": "4 portions",
+          "temps_preparation": "10 min",
+          "temps_cuisson": "12 min",
+          "ingredients": [
+            "4 filets de poisson blanc (tilapia, sole) 150 g chacun",
+            "500 ml (2 tasses) de brocolis en bouquets",
+            "5 ml (1 c. à thé) de curcuma moulu",
+            "Le jus d'1 citron",
+            "15 ml (1 c. à soupe) d'huile d'olive",
+            "5 ml (1 c. à thé) de gingembre frais râpé",
+            "2 ml (½ c. à thé) de sel"
+          ],
+          "preparation": [
+            "1. Préparez votre cuiseur vapeur.",
+            "2. Disposez les brocolis au fond du panier.",
+            "3. Placez les filets de poisson par-dessus.",
+            "4. Mélangez le curcuma, gingembre, jus de citron, huile et sel.",
+            "5. Versez sur le poisson.",
+            "6. Cuisez à la vapeur 10-12 minutes.",
+            "7. Le poisson doit être opaque et se défaire facilement.",
+            "8. Servez immédiatement."
+          ]
+        }
       ]
     },
     {
-      "theme": "Recettes Desserts",
+      "theme": "Plats Principaux - Végétariens et Vegan",
+      "description": "Options végétales délicieuses et nutritives",
       "recettes": [
-        {"titre": "Gâteau moelleux sans gluten sans lactose","ingredients": ["Farine sans gluten","Compote de pommes","Lait végétal"],"preparation": "Mélanger et cuire 25-30 min à 180°C."},
-        {"titre": "Muffins aux fruits sans gluten sans lactose","ingredients": ["Farine sans gluten","Petits fruits","Lait végétal"],"preparation": "Préparer la pâte, ajouter les fruits et cuire 20 min à 180°C."},
-        {"titre": "Dessert glacé banane-fraise","ingredients": ["Bananes congelées","Fraises congelées"],"preparation": "Mixer les fruits pour obtenir une crème glacée instantanée."},
-        {"titre": "Chips de pomme maison","ingredients": ["Pommes","Cannelle"],"preparation": "Trancher les pommes, saupoudrer de cannelle et cuire au four 2h à basse température."}
-      ]
-    },
-    {
-      "theme": "Recettes Noël",
-      "recettes": [
-        {"titre": "Farce pour dinde sans gluten sans lactose","ingredients": ["Pain sans gluten","Oignons","Céleri","Bouillon de légumes"],"preparation": "Mélanger les ingrédients et cuire avant de farcir la dinde."},
-        {"titre": "Marinade de Noël classique","ingredients": ["Huile d’olive","Ail","Herbes de Noël","Jus d’orange"],"preparation": "Mélanger et badigeonner les viandes."},
-        {"titre": "Accompagnement légumes rôtis de Noël","ingredients": ["Courges","Carottes","Pommes de terre"],"preparation": "Assaisonner et rôtir au four."}
-      ]
-    },
-    {
-      "theme": "Recettes Salades Hivernales et Hors-d'œuvre",
-      "recettes": [
-        {"titre": "Salade d’amour hivernale","ingredients": ["Chou rouge","Carottes","Vinaigrette légère"],"preparation": "Râper les légumes et mélanger avec la vinaigrette."},
-        {"titre": "Salade de pommes de terre hivernale","ingredients": ["Pommes de terre","Cornichons","Ciboulette"],"preparation": "Cuire les pommes de terre, mélanger avec les autres ingrédients."},
-        {"titre": "Salade originale poires-noix","ingredients": ["Poires","Noix","Roquette"],"preparation": "Assembler les ingrédients et ajouter une vinaigrette."},
-        {"titre": "Hors-d’œuvre roulés de courgettes","ingredients": ["Courgettes","Tomates séchées","Basilic"],"preparation": "Griller les courgettes, garnir et rouler."}
+        {
+          "titre": "Tofu aux Légumes et Curry Doux",
+          "portions": "4 portions",
+          "temps_preparation": "15 min",
+          "temps_cuisson": "15 min",
+          "ingredients": [
+            "400 g (14 oz) de tofu ferme coupé en cubes",
+            "2 courgettes moyennes coupées en demi-lunes",
+            "250 ml (1 tasse) d'épinards frais",
+            "15 ml (1 c. à soupe) de pâte de curry doux",
+            "250 ml (1 tasse) de lait de coco",
+            "30 ml (2 c. à soupe) d'huile de sésame",
+            "10 ml (2 c. à thé) de gingembre frais râpé",
+            "5 ml (1 c. à thé) de sauce soja sans gluten"
+          ],
+          "preparation": [
+            "1. Pressez le tofu pour retirer l'excès d'eau.",
+            "2. Coupez en cubes de 2 cm.",
+            "3. Chauffez l'huile dans un wok à feu moyen-élevé.",
+            "4. Faites dorer le tofu 5 minutes de chaque côté.",
+            "5. Retirez et réservez.",
+            "6. Faites sauter les courgettes 5 minutes.",
+            "7. Ajoutez la pâte de curry et le gingembre, mélangez 1 minute.",
+            "8. Versez le lait de coco et la sauce soja.",
+            "9. Remettez le tofu, ajoutez les épinards.",
+            "10. Cuisez 3-5 minutes jusqu'à ce que les épinards soient fanés.",
+            "11. Servez sur du riz."
+          ]
+        },
+        {
+          "titre": "Pois Chiches Croustillants Assaisonnés",
+          "portions": "4 portions (collation ou accompagnement)",
+          "temps_preparation": "5 min",
+          "temps_cuisson": "20 min",
+          "ingredients": [
+            "540 ml (19 oz/1 boîte) de pois chiches égouttés",
+            "30 ml (2 c. à soupe) d'huile d'olive",
+            "5 ml (1 c. à thé) de curcuma",
+            "5 ml (1 c. à thé) de paprika",
+            "5 ml (1 c. à thé) de cumin moulu",
+            "2 ml (½ c. à thé) de sel",
+            "1 ml (¼ c. à thé) de cayenne (optionnel)"
+          ],
+          "preparation": [
+            "1. Rincez et égouttez bien les pois chiches.",
+            "2. Séchez-les avec un linge propre.",
+            "3. Dans un bol, mélangez l'huile et toutes les épices.",
+            "4. Ajoutez les pois chiches et enrobez bien.",
+            "5. Placez dans le panier du Airfryer en une seule couche.",
+            "6. Cuisez 15-20 minutes à 180°C (350°F).",
+            "7. Secouez le panier toutes les 5 minutes.",
+            "8. Ils doivent être dorés et croustillants.",
+            "9. Laissez refroidir avant de servir."
+          ]
+        }
       ]
     },
     {
       "theme": "Recettes Feuilles de Riz",
+      "description": "Rouleaux frais et croustillants, version salée et sucrée",
       "recettes": [
-        {"titre": "Rouleaux de riz au saumon","ingredients": ["Feuilles de riz","Saumon","Avocat"],"preparation": "Humecter les feuilles de riz à l’eau, garnir et cuire légèrement au four."},
-        {"titre": "Rouleaux de riz crevettes","ingredients": ["Feuilles de riz","Crevettes","Laitue"],"preparation": "Tremper les feuilles dans l’eau, garnir et cuire au four 8-10 min."},
-        {"titre": "Rouleaux de riz poulet","ingredients": ["Feuilles de riz","Poulet cuit","Carottes râpées"],"preparation": "Humecter les feuilles, garnir et cuire au four 10 min."},
-        {"titre": "Rouleaux de riz bœuf","ingredients": ["Feuilles de riz","Bœuf haché","Poivrons"],"preparation": "Humidifier, garnir et cuire au four 12 min."},
-        {"titre": "Dessert croustillant feuille de riz banane-chocolat","ingredients": ["Feuilles de riz","Banane","Chocolat sans lactose fondu"],"preparation": "Humecter les feuilles, garnir et cuire 5 min pour croustiller."}
-      ]
-    },
-    {
-      "theme": "Recettes Poké Bowls",
-      "recettes": [
-        {"titre": "Poké Bowl Poulet","ingredients": ["Poulet grillé","Riz","Légumes croquants"],"preparation": "Assembler dans un bol avec sauce sans gluten."},
-        {"titre": "Poké Bowl Saumon croustillant","ingredients": ["Saumon grillé croustillant","Riz","Avocat"],"preparation": "Servir avec sauce soja sans gluten."},
-        {"titre": "Poké Bowl Crevettes","ingredients": ["Crevettes grillées","Riz","Mangue"],"preparation": "Assembler dans un bol avec légumes."},
-        {"titre": "Poké Bowl Thon","ingredients": ["Thon mariné","Riz","Édamamés"],"preparation": "Assembler avec légumes et sauce sans gluten."},
-        {"titre": "Poké Bowl Vegan","ingredients": ["Tofu grillé","Riz","Légumes variés"],"preparation": "Assembler et servir froid."},
-        {"titre": "Poké Bowl Végétarien","ingredients": ["Omelette sans lactose","Riz","Légumes"],"preparation": "Couper en morceaux et assembler."},
-        {"titre": "Poké Bowl Poulet épicé","ingredients": ["Poulet assaisonné pimenté","Riz","Concombre"],"preparation": "Assembler avec sauce piquante."},
-        {"titre": "Poké Bowl Saumon épicé","ingredients": ["Saumon mariné épicé","Riz","Chou rouge"],"preparation": "Servir avec garnitures croquantes."},
-        {"titre": "Poké Bowl Très piquant","ingredients": ["Poisson ou tofu","Riz","Sauce extra piquante"],"preparation": "Assembler et servir pour amateurs de piquant."}
-      ]
-    },
-    {
-      "theme": "Recettes Soupes Consistantes",
-      "recettes": [
-        {"titre": "Soupe aux légumineuses","ingredients": ["Lentilles","Pois chiches","Bouillon"],"preparation": "Cuire tous les ingrédients ensemble jusqu’à consistance épaisse."},
-        {"titre": "Soupe courge butternut","ingredients": ["Courge butternut","Bouillon","Épices"],"preparation": "Cuire et mixer pour obtenir une soupe veloutée."},
-        {"titre": "Soupe au poulet consistante","ingredients": ["Poulet","Pommes de terre","Carottes"],"preparation": "Cuire le tout dans du bouillon jusqu’à épaississement."},
-        {"titre": "Soupe aux champignons et riz","ingredients": ["Champignons","Riz","Bouillon"],"preparation": "Cuire ensemble pour obtenir une soupe nourrissante."},
-        {"titre": "Soupe aux patates douces et coco","ingredients": ["Patates douces","Lait de coco","Bouillon"],"preparation": "Cuire et mixer pour consistance crémeuse."}
-      ]
-    },
-    {
-      "theme": "Recettes Anti-inflammatoires",
-      "recettes": [
-        {"titre": "Poulet curcuma et légumes","ingredients": ["Poulet","Curcuma","Courgettes","Carottes"],"preparation": "Cuire le poulet avec légumes et curcuma."},
-        {"titre": "Saumon au gingembre citron","ingredients": ["Saumon","Gingembre frais","Citron"],"preparation": "Cuire le saumon avec assaisonnement léger."},
-        {"titre": "Porc aux légumes et curcuma","ingredients": ["Porc","Curcuma","Poivrons","Oignons"],"preparation": "Sauter avec un filet d’huile d’olive."},
-        {"titre": "Poisson vapeur au curcuma et légumes verts","ingredients": ["Poisson blanc","Brocolis","Curcuma"],"preparation": "Cuire à la vapeur et assaisonner."},
-        {"titre": "Tofu aux légumes et curry doux","ingredients": ["Tofu","Courgettes","Épinards","Curry doux"],"preparation": "Faire revenir le tofu et légumes avec curry."},
-        {"titre": "Soupe dorée au curcuma et lentilles","ingredients": ["Lentilles","Curcuma","Bouillon"],"preparation": "Cuire jusqu’à consistance épaisse et réconfortante."}
+        {
+          "titre": "Rouleaux de Riz au Saumon",
+          "portions": "8 rouleaux",
+          "temps_preparation": "20 min",
+          "temps_cuisson": "10 min",
+          "ingredients": [
+            "8 feuilles de riz (22 cm de diamètre)",
+            "200 g de saumon cuit émietté",
+            "1 avocat tranché finement",
+            "1 concombre coupé en julienne",
+            "125 ml (½ tasse) de carottes râpées",
+            "60 ml (¼ tasse) de sauce soja sans gluten"
+          ],
+          "preparation": [
+            "1. Préchauffez le four à 180°C (350°F).",
+            "2. Remplissez un grand bol d'eau tiède.",
+            "3. Trempez une feuille de riz 10 secondes jusqu'à ce qu'elle ramollisse.",
+            "4. Placez-la sur une surface propre.",
+            "5. Au centre, disposez un peu de saumon, avocat, concombre et carottes.",
+            "6. Repliez les côtés puis roulez fermement.",
+            "7. Répétez pour tous les rouleaux.",
+            "8. Placez sur une plaque huilée.",
+            "9. Cuisez 8-10 minutes jusqu'à léger croustillant.",
+            "10. Servez avec la sauce soja."
+          ]
+        },
+        {
+          "titre": "Rouleaux de Riz aux Crevettes",
+          "portions": "8 rouleaux",
+          "temps_preparation": "20 min",
+          "temps_cuisson": "10 min",
+          "ingredients": [
+            "8 feuilles de riz (22 cm)",
+            "16 crevettes cuites décortiquées",
+            "125 ml (½ tasse) de laitue ciselée",
+            "125 ml (½ tasse) de carottes râpées",
+            "60 ml (¼ tasse) de menthe fraîche",
+            "60 ml (¼ tasse) de coriandre fraîche"
+          ],
+          "preparation": [
+            "1. Préchauffez le four à 180°C (350°F).",
+            "2. Préparez un bol d'eau tiède.",
+            "3. Humidifiez une feuille de riz 10 secondes.",
+            "4. Posez-la à plat.",
+            "5. Placez 2 crevettes, laitue, carottes et herbes au centre.",
+            "6. Pliez les côtés et roulez serré.",
+            "7. Répétez pour les 8 rouleaux.",
+            "8. Disposez sur une plaque huilée.",
+            "9. Cuisez 8-10 minutes.",
+            "10. Servez chaud ou tiède."
+          ]
+        },
+        {
+          "titre": "Rouleaux de Riz au Poulet",
+          "portions": "8 rouleaux",
+          "temps_preparation": "20 min",
+          "temps_cuisson": "10 min",
+          "ingredients": [
+            "8 feuilles de riz (22 cm)",
+            "250 ml (1 tasse) de poulet cuit émincé",
+            "125 ml (½ tasse) de carottes râpées",
+            "125 ml (½ tasse) de chou rouge râpé",
+            "60 ml (¼ tasse) de coriandre fraîche",
+            "30 ml (2 c. à soupe) de sauce aux arachides (optionnel)"
+          ],
+          "preparation": [
+            "1. Préchauffez le four à 180°C (350°F).",
+            "2. Humidifiez chaque feuille de riz dans l'eau tiède 10 secondes.",
+            "3. Disposez un peu de poulet et légumes au centre.",
+            "4. Ajoutez quelques feuilles de coriandre.",
+            "5. Repliez et roulez fermement.",
+            "6. Placez sur une plaque légèrement huilée.",
+            "7. Cuisez 10 minutes.",
+            "8. Servez avec sauce aux arachides si désiré."
+          ]
+        },
+        {
+          "titre": "Rouleaux de Riz au Bœuf",
+          "portions": "8 rouleaux",
+          "temps_preparation": "20 min",
+          "temps_cuisson": "12 min",
+          "ingredients": [
+            "8 feuilles de riz (22 cm)",
+            "300 g de bœuf haché cuit assaisonné",
+            "1 poivron rouge coupé en lanières",
+            "125 ml (½ tasse) d'oignons verts hachés",
+            "125 ml (½ tasse) de laitue ciselée",
+            "15 ml (1 c. à soupe) de sauce hoisin sans gluten"
+          ],
+          "preparation": [
+            "1. Préchauffez le four à 180°C (350°F).",
+            "2. Faites cuire le bœuf haché avec sel et poivre.",
+            "3. Humidifiez une feuille de riz dans l'eau tiède.",
+            "4. Garnissez de bœuf, poivron, oignons verts et laitue.",
+            "5. Roulez en serrant bien.",
+            "6. Répétez pour tous les rouleaux.",
+            "7. Disposez sur une plaque huilée.",
+            "8. Badigeonnez légèrement de sauce hoisin.",
+            "9. Cuisez 12 minutes jusqu'à croustillant.",
+            "10. Servez chaud."
+          ]
+        },
+        {
+          "titre": "Rouleaux de Riz Végétariens",
+          "portions": "8 rouleaux",
+          "temps_preparation": "20 min",
+          "temps_cuisson": "8 min",
+          "ingredients": [
+            "8 feuilles de riz (22 cm)",
+            "200 g de tofu mariné coupé en bâtonnets",
+            "1 avocat tranché",
+            "1 concombre en julienne",
+            "125 ml (½ tasse) de carottes râpées",
+            "60 ml (¼ tasse) de germinations",
+            "30 ml (2 c. à soupe) de sauce soja sans gluten"
+          ],
+          "preparation": [
+            "1. Préchauffez le four à 180°C (350°F).",
+            "2. Trempez chaque feuille de riz 10 secondes dans l'eau tiède.",
+            "3. Garnissez de tofu, avocat, concombre, carottes et germinations.",
+            "4. Roulez fermement en repliant les côtés.",
+            "5. Placez sur une plaque huilée.",
+            "6. Cuisez 8 minutes ou servez frais.",
+            "7. Accompagnez de sauce soja."
+          ]
+        },
+        {
+          "titre": "Dessert Croustillant Banane-Chocolat",
+          "portions": "8 rouleaux dessert",
+          "temps_preparation": "15 min",
+          "temps_cuisson": "7 min",
+          "ingredients": [
+            "8 feuilles de riz (22 cm)",
+            "2 bananes coupées en tranches",
+            "125 ml (½ tasse) de chocolat sans lactose fondu",
+            "5 ml (1 c. à thé) de cannelle",
+            "15 ml (1 c. à soupe) de sucre de coco (optionnel)"
+          ],
+          "preparation": [
+            "1. Préchauffez le four à 200°C (400°F).",
+            "2. Faites fondre le chocolat au bain-marie.",
+            "3. Humidifiez une feuille de riz 10 secondes.",
+            "4. Disposez quelques tranches de banane au centre.",
+            "5. Arrosez de chocolat fondu.",
+            "6. Saupoudrez de cannelle.",
+            "7. Roulez fermement.",
+            "8. Placez sur une plaque huilée.",
+            "9. Cuisez 5-7 minutes jusqu'à croustillant et doré.",
+            "10. Laissez tiédir 2 minutes avant de servir."
+          ]
+        }
       ]
     }
   ],
-  "index_ingredients": {
-    "Poulet": 6,
-    "Saumon": 5,
-    "Porc": 2,
-    "Tofu": 2,
-    "Poisson": 2,
-    "Légumineuses": 2,
-    "Légumes variés": 10,
-    "Fruits": 4
+  "notes_importantes": {
+    "conversions_utiles": {
+      "1_tasse": "250 ml",
+      "1/2_tasse": "125 ml",
+      "1/4_tasse": "60 ml",
+      "1_c_a_soupe": "15 ml",
+      "1_c_a_the": "5 ml"
+    },
+    "temperatures": {
+      "four_bas": "150°C (300°F)",
+      "four_moyen": "180°C (350°F)",
+      "four_eleve": "200°C (400°F)"
+    }
   }
 }
